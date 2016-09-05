@@ -1,6 +1,7 @@
 class ReferralsController < ApplicationController
   before_action :set_referral, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_employee!
+  
   # GET /referrals
   def index
     @referrals = Referral.all
@@ -24,6 +25,7 @@ class ReferralsController < ApplicationController
     @referral = Referral.new(referral_params)
 
     if @referral.save
+
       redirect_to @referral, notice: 'Referral was successfully created.'
     else
       render :new
