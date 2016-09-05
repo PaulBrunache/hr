@@ -1,38 +1,32 @@
 class ReferralsController < ApplicationController
   before_action :set_referral, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_employee!
-  
-  # GET /referrals
+
   def index
     @referrals = Referral.all
   end
 
-  # GET /referrals/1
   def show
   end
 
-  # GET /referrals/new
   def new
     @referral = Referral.new
   end
 
-  # GET /referrals/1/edit
   def edit
   end
 
-  # POST /referrals
   def create
     @referral = Referral.new(referral_params)
+    @referral.employee_id = current_employee.id if current_employee
 
     if @referral.save
-
       redirect_to @referral, notice: 'Referral was successfully created.'
     else
       render :new
     end
   end
 
-  # PATCH/PUT /referrals/1
   def update
     if @referral.update(referral_params)
       redirect_to @referral, notice: 'Referral was successfully updated.'
@@ -41,7 +35,6 @@ class ReferralsController < ApplicationController
     end
   end
 
-  # DELETE /referrals/1
   def destroy
     @referral.destroy
     redirect_to referrals_url, notice: 'Referral was successfully destroyed.'

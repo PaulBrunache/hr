@@ -15,5 +15,4 @@ Rails.application.routes.draw do
   devise_for :admins
   devise_for :employees
   get 'pages/home'
-
 end
