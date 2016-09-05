@@ -1,0 +1,24 @@
+p#notice = notice
+
+p
+  strong First name:
+  = @referral.first_name
+p
+  strong Last name:
+  = @referral.last_name
+p
+  strong Email:
+  = @referral.email
+p
+  strong Phone number:
+  = @referral.phone_number
+p
+  strong Employee:
+  = @referral.employee
+p
+  strong Position:
+  = @referral.position
+
+= link_to 'Edit', edit_referral_path(@referral)
+'|
+= link_to 'Back', referrals_path

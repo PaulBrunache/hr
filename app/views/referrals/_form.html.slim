@@ -1,0 +1,27 @@
+= form_for @referral do |f|
+  - if @referral.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@referral.errors.count, "error")} prohibited this referral from being saved:"
+      ul
+        - @referral.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :first_name
+    = f.text_field :first_name
+  .field
+    = f.label :last_name
+    = f.text_field :last_name
+  .field
+    = f.label :email
+    = f.text_field :email
+  .field
+    = f.label :phone_number
+    = f.text_field :phone_number
+  .field
+    = f.label :employee
+    = f.text_field :employee
+  .field
+    = f.label :position
+    = f.text_field :position
+  .actions = f.submit
