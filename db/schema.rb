@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160905212654) do
+ActiveRecord::Schema.define(version: 20160905223201) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "first_name",             default: "",                null: false
@@ -54,6 +54,23 @@ ActiveRecord::Schema.define(version: 20160905212654) do
     t.index ["department_id"], name: "index_employees_on_department_id"
     t.index ["email"], name: "index_employees_on_email", unique: true
     t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
+  end
+
+  create_table "referrals", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "phone_number"
+    t.text     "status",          default: "{\"pending\":true,\"phone_screening\":false,\"hr_screening\":false,\"interviewing\":false,\"hired\":false,\"unqualified\":false}"
+    t.text     "phone_screening", default: "{\"contacted1\":false,\"contacted2\":false,\"contacted3\":false,\"unqualified\":false,\"sent_to_hr\":false}"
+    t.text     "hr_screening",    default: "{\"not_qualified\":false,\"qualified\":false,\"moved_to_interview\":false}"
+    t.text     "interviewing",    default: "{\"hired_hourly\":false,\"hired_salaried\":false,\"hired_hard_to_fill\":false,\"not_selected_eligible\":false,\"not_selected_ineligible\":false}"
+    t.integer  "employee_id"
+    t.integer  "position_id"
+    t.datetime "created_at",                                                                                                                                                                   null: false
+    t.datetime "updated_at",                                                                                                                                                                   null: false
+    t.index ["employee_id"], name: "index_referrals_on_employee_id"
+    t.index ["position_id"], name: "index_referrals_on_position_id"
   end
 
 end
