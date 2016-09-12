@@ -1,0 +1,14 @@
+.ui.icon.menu.bg-gradient-main
+  #welcome.menu.item
+    i.chevron.circle.large.left.icon
+    p Welcome to your Morse Life Dashboard Paul
+    i.chevron.circle.large.right.icon
+  .right.labeled.menu.red
+    a.item
+      i.user.icon
+      | Profile
+    = link_to destroy_hr_session_path, method: :delete, class: "item"
+      i.lock.icon		    
+      | Logout	
+#dashboard-sidebar
+  == render 'layouts/sidebar'

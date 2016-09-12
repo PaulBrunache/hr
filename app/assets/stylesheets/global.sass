@@ -1,8 +1,50 @@
-.bg-gradient-main
-  height: 100%
-  background: -moz-linear-gradient(-65deg, #008fe2 0, #00b29c 100%)
-  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #008fe2), color-stop(100%, #00b29c))
-  background: -webkit-linear-gradient(-65deg, #008fe2 0, #00b29c 100%)
-  background: -o-linear-gradient(-65deg, #008fe2 0, #00b29c 100%)
-  background: -ms-linear-gradient(-65deg, #008fe2 0, #00b29c 100%)
-  background: linear-gradient(154deg, #008fe2 0, #00b29c 100%)
+body
+  background-color: #fafcfe
+#application
+  max-width: 1366px
+  margin: auto
+  height: 768px
+
+  #content
+    padding-top: 50px
+    padding-left: 260px
+    #container
+      padding: 5%
+  #menu
+    z-index: 1
+    height: 70px
+    width: 100%
+    position: fixed
+    max-width: 1366px
+    top: 0
+    .ui.icon.menu
+      margin-bottom: 0
+      .item
+        color: rgba(255,255,255,.85)
+    #welcome
+      box-shadow: 0 -1px 5px rgba(0,0,0,.3)
+      width: 260px
+    #dashboard-sidebar
+      background-color: white
+      width: 260px
+      height: 698px
+      box-shadow: 0 4px 5px rgba(0,0,0,.3)
+      .ui.secondary.vertical.menu
+        margin: auto
+        margin-top: 0
+        border-radius: 0
+        height: 100%
+        padding: 5%
+        .item
+          color: #337ab7
+
+  .bg-gradient-main
+    border-radius: 0
+    border: none
+    height: 100%
+    background: -moz-linear-gradient(-65deg, #008fe2 0, #00b29c 100%)
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #008fe2), color-stop(100%, #00b29c))
+    background: -webkit-linear-gradient(-65deg, #008fe2 0, #00b29c 100%)
+    background: -o-linear-gradient(-65deg, #008fe2 0, #00b29c 100%)
+    background: -ms-linear-gradient(-65deg, #008fe2 0, #00b29c 100%)
+    background: linear-gradient(154deg, #008fe2 0, #00b29c 100%)

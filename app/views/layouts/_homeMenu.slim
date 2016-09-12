@@ -1,13 +1,12 @@
-.ui.menu
-  a.item href="http://www.morselifecareers.org/" 
-    i.caret.left.icon
-    | Return to Careers Home
-  a.item href="/" 
-    i.home.left.icon
-    | Referral  Home
-  / a.item data-method="delete" href="/sign_out" rel="nofollow" 
-  /   i.add.user.icon
-  /   | Refer a Friend
-  / a.item href="/admin/dashboard" 
-  /   i.dashboard.icon
-  /   | Dashboard
+.ui.icon.menu.bg-gradient-main
+  a.menu.item
+    i.content.large.icon
+  a.menu.item href=""
+    i.home.large.icon
+  .right.labeled.menu.red
+    a.item
+      i.home.large.icon
+      | Profile
+    = link_to destroy_hr_session_path, method: :delete, class: "item"
+      i.lock.icon		    
+      | Logout	
