@@ -10,27 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160905223201) do
-
-  create_table "admins", force: :cascade do |t|
-    t.string   "first_name",             default: "",                null: false
-    t.string   "last_name",              default: "",                null: false
-    t.string   "email",                  default: "",                null: false
-    t.string   "role",                   default: "Human Resources", null: false
-    t.string   "encrypted_password",     default: "",                null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,                 null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at",                                         null: false
-    t.datetime "updated_at",                                         null: false
-    t.index ["email"], name: "index_admins_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
-  end
+ActiveRecord::Schema.define(version: 20160911235949) do
 
   create_table "employees", force: :cascade do |t|
     t.string   "first_name",             default: "", null: false
@@ -54,6 +34,26 @@ ActiveRecord::Schema.define(version: 20160905223201) do
     t.index ["department_id"], name: "index_employees_on_department_id"
     t.index ["email"], name: "index_employees_on_email", unique: true
     t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
+  end
+
+  create_table "hrs", force: :cascade do |t|
+    t.string   "first_name",             default: "",                null: false
+    t.string   "last_name",              default: "",                null: false
+    t.string   "email",                  default: "",                null: false
+    t.string   "role",                   default: "Human Resources", null: false
+    t.string   "encrypted_password",     default: "",                null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,                 null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
+    t.index ["email"], name: "index_hrs_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_hrs_on_reset_password_token", unique: true
   end
 
   create_table "referrals", force: :cascade do |t|

@@ -1,7 +1,7 @@
-class DeviseCreateAdmins < ActiveRecord::Migration[5.0]
+class DeviseCreateHrs < ActiveRecord::Migration[5.0]
   def change
-    create_table :admins do |t|
-      ## Database authenticatable
+    create_table :hrs do |t|
+
       t.string :first_name, null: false, default: ""
       t.string :last_name, null: false, default: ""
       t.string :email, null: false, default: ""
@@ -22,6 +22,7 @@ class DeviseCreateAdmins < ActiveRecord::Migration[5.0]
       t.string   :current_sign_in_ip
       t.string   :last_sign_in_ip
 
+
       ## Confirmable
       # t.string   :confirmation_token
       # t.datetime :confirmed_at
@@ -37,9 +38,9 @@ class DeviseCreateAdmins < ActiveRecord::Migration[5.0]
       t.timestamps null: false
     end
 
-    add_index :admins, :email,                unique: true
-    add_index :admins, :reset_password_token, unique: true
-    # add_index :admins, :confirmation_token,   unique: true
-    # add_index :admins, :unlock_token,         unique: true
+    add_index :hrs, :email,                unique: true
+    add_index :hrs, :reset_password_token, unique: true
+    # add_index :hrs, :confirmation_token,   unique: true
+    # add_index :hrs, :unlock_token,         unique: true
   end
 end
