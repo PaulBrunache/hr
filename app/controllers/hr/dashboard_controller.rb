@@ -1,5 +1,5 @@
 class Hr::DashboardController < ApplicationController
-  before_action :authenticate_hr!
+  #before_action :authenticate_hr!
 
   def manageReferrals
 

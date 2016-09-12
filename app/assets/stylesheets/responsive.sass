@@ -1,0 +1,20 @@
+$mobile-width: 30rem //480px
+$tablet-width: 50rem //800px
+$desktop-width: 64rem //1024px
+$lg-desktop-width: 75rem //1200px
+
+=lg-desktop
+  @media all and (min-width: #{$lg-desktop-width})
+    @content
+
+=tablet
+  @media all and (max-width: #{$desktop-width - .063rem})
+    @content
+
+=small-tablet
+  @media all and (max-width: #{$tablet-width - .063rem})
+    @content
+
+=mobile
+  @media all and (max-width: #{$mobile-width - .063rem})
+    @content

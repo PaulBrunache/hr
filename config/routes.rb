@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
 
-  devise_for :hrs
-  devise_for :employees
   resources :referrals
+
+  devise_for :employees, path: "",
+  path_names: { sign_in: 'employee/login',sign_out: 'logout' }
+
+  devise_for :hrs, path: "",
+  path_names: { sign_in: 'hr/login',sign_out: 'logout' }
+
+
   get 'pages/home'
 
   root 'hr/dashboard#manageReferrals'
