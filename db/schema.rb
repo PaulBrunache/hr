@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160911235949) do
+ActiveRecord::Schema.define(version: 20160915054934) do
 
   create_table "employees", force: :cascade do |t|
     t.string   "first_name",             default: "", null: false
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20160911235949) do
     t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
   end
 
-  create_table "hrs", force: :cascade do |t|
+  create_table "human_resources", force: :cascade do |t|
     t.string   "first_name",             default: "",                null: false
     t.string   "last_name",              default: "",                null: false
     t.string   "email",                  default: "",                null: false
@@ -52,8 +52,8 @@ ActiveRecord::Schema.define(version: 20160911235949) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                                         null: false
     t.datetime "updated_at",                                         null: false
-    t.index ["email"], name: "index_hrs_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_hrs_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_human_resources_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_human_resources_on_reset_password_token", unique: true
   end
 
   create_table "referrals", force: :cascade do |t|
