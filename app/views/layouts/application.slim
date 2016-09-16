@@ -10,8 +10,20 @@ head
 body
 
   #application
-    #menu
-      == render 'layouts/dashboardMenu'
-    #content
-      #container
-        = yield 
+    
+    - if reroute(params[:controller])
+      #menu
+        == render 'layouts/dashboardMenu'
+      #content
+        .ui-container
+          = yield 
+    - else
+      #menu
+        == render 'layouts/homeMenu'
+      #content-not-dash
+        .ui-container
+          = yield 
+
+      
+        
+        
