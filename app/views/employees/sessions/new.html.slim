@@ -1,18 +1,24 @@
-h2
-  | Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true
-  .field
-    = f.label :password
-    br
-    = f.password_field :password, autocomplete: "off"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "employees/shared/links"
+.authorized-container.ui.middle.aligned.centered.grid
+    .nine.wide.column.custom-border
+      img.ui.fluid.image.shadow alt="Background" height="100%" src="/assets/background-6ea1d099cdaeba8e2b6cd947611b89a0f3b2dac4c5725a77e9a701736cdccef1.png" width="100%" /
+    .nine.wide.column.authorize-form
+      = form_for(resource, as: resource_name, html: {class:'ui form'}, url: session_path(resource_name)) do |f|
+        h4.ui.dividing.header Employees
+        .field
+          .ui.left.icon.input
+            = f.email_field :email, autofocus: true 
+            i.user.icon
+        .field
+          .ui.left.icon.input
+            = f.password_field :password, autocomplete: "off"
+            i.lock.icon
+        - if devise_mapping.rememberable?
+          .field
+            .ui.toggle.checkbox
+              = f.check_box :remember_me
+              = f.label :remember_me
+
+        .column
+          button.ui.basic.fluid.submit.button name="send" type="submit" 
+            i.icon.send
+            | Login
