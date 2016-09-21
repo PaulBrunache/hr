@@ -3,7 +3,7 @@
       img.ui.fluid.image.shadow alt="Background" height="100%" src="/assets/background-6ea1d099cdaeba8e2b6cd947611b89a0f3b2dac4c5725a77e9a701736cdccef1.png" width="100%" /
     .nine.wide.column.authorize-form
       = form_for(resource, as: resource_name, html: {class:'ui form'}, url: session_path(resource_name)) do |f|
-        h4.ui.dividing.header Human Resources
+        h4.ui.dividing.header.center.aligned Human Resources
         .field
           .ui.left.icon.input
             = f.email_field :email, autofocus: true 
@@ -22,3 +22,6 @@
           button.ui.basic.fluid.submit.button name="send" type="submit" 
             i.icon.send
             | Login
+        
+        .column
+          = render "employees/shared/links"

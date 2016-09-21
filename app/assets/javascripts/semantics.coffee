@@ -3,3 +3,4 @@ $(document).on 'turbolinks:load', ->
   $('.tabular.menu .item').tab()
   $('.ui.active.modal').modal('show')
   $('.ui.cards .image').dimmer(on: 'hover')
+  $('table').tablesort()

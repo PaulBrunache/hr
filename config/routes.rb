@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   devise_for :employees
   resources :referrals
 
+
   get 'pages/home'
 
   root 'human_resources/dashboard#manageReferrals'
