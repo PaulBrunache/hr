@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
 
 
+  resources :job_postings
+  resources :departments
   devise_for :human_resources
   devise_for :employees
   resources :referrals
