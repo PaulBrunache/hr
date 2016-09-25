@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160925164546) do
+ActiveRecord::Schema.define(version: 20160925183049) do
 
   create_table "departments", force: :cascade do |t|
     t.string   "name"
@@ -62,6 +62,12 @@ ActiveRecord::Schema.define(version: 20160925164546) do
     t.index ["reset_password_token"], name: "index_human_resources_on_reset_password_token", unique: true
   end
 
+  create_table "jobPostings_referrals", id: false, force: :cascade do |t|
+    t.integer "job_posting_id", null: false
+    t.integer "referral_id",    null: false
+    t.index ["job_posting_id", "referral_id"], name: "index_jobPostings_referrals_on_job_posting_id_and_referral_id"
+  end
+
   create_table "job_postings", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
@@ -79,11 +85,9 @@ ActiveRecord::Schema.define(version: 20160925164546) do
     t.text     "hr_screening",    default: "{\"not_qualified\":false,\"qualified\":false,\"moved_to_interview\":false}"
     t.text     "interviewing",    default: "{\"hired_hourly\":false,\"hired_salaried\":false,\"hired_hard_to_fill\":false,\"not_selected_eligible\":false,\"not_selected_ineligible\":false}"
     t.integer  "employee_id"
-    t.integer  "position_id"
     t.datetime "created_at",                                                                                                                                                                   null: false
     t.datetime "updated_at",                                                                                                                                                                   null: false
     t.index ["employee_id"], name: "index_referrals_on_employee_id"
-    t.index ["position_id"], name: "index_referrals_on_position_id"
   end
 
 end
