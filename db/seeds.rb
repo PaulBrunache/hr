@@ -1,4 +1,4 @@
-department_list = ["Row Labels","FDN","Foundation","Executive","FINANCE","HR","IT","MEA","Grant","Kramer Senior Service Agy","MGC","ADMINISTRATIVE SERVICES
+department_list = ["Foundation","Executive","FINANCE","HR","IT","MEA","Grant","Kramer Senior Service Agy","MGC","ADMINISTRATIVE SERVICES
 ","ADMISSIONS","CULN/NUTRITION SVCS","FACILITIES MANAGEMENT","FISCAL","HOUSEKEEPING","INSTITUTE","MARKET DEVELOPMENT
 ","MEDICAL SERVICES","MEMORY CARE","None Specified","NURSING SERVICES","PURCHASING","REHAB SERVICES","SOCIAL SERVICES
 ","THERAPEUTIC RECREATION","THRIFT SHOP","MHC","Administration","Culinary Services","HOUSEKEEPING","Maintenance
