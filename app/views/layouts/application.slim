@@ -15,12 +15,18 @@ body
       #menu
         == render 'layouts/dashboardMenu'
       #content
+        - flash.each do |key, value|
+            .ui.warning.message
+              p = value
         .ui-container
           = yield 
     - else
       #menu-home
         == render 'layouts/homeMenu'
       #content-not-dash
+        - flash.each do |key, value|
+            .ui.warning.message
+              p = value
         .ui-container
           = yield 
 
