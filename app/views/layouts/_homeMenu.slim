@@ -1,12 +1,7 @@
 .ui.icon.menu.bg-gradient-main
-  a.menu.item
-    i.content.large.icon
-  a.menu.item href=""
-    i.home.large.icon
+  a.item href="http://www.morselifecareers.org/" 
+    i.caret.left.icon
+    | Return to Careers Home
   .right.labeled.menu.red
-    a.item
+    a.menu.item href= root_path
       i.home.large.icon
-      | Profile
-    = link_to destroy_human_resource_session_path, method: :delete, class: "item"
-      i.lock.icon		    
-      | Logout	

@@ -18,8 +18,7 @@
           .ui.left.icon.input
             = f.text_field :employee_number, autofocus: true, placeholder: 'Enter employee #'
         .field
-          .ui.left.icon.input
-            = f.text_field :department_id, autofocus: true, placeholder: 'Enter department #'
+            = f.collection_select :department_id, Department.all,:id, :name, {prompt: 'Select department'}, {class: 'ui search dropdown'}
         .field
           .ui.left.icon.input
             = f.text_field :phone_number, autofocus: true, placeholder: 'Enter your phone #'

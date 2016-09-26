@@ -12,6 +12,7 @@
           .ui.left.icon.input
             = f.password_field :password, autocomplete: "off"
             i.lock.icon
+        br
         - if devise_mapping.rememberable?
           .field
             .ui.toggle.checkbox
@@ -22,6 +23,6 @@
           button.ui.basic.fluid.submit.button name="send" type="submit" 
             i.icon.send
             | Login
-        
+        br
         .column
-          = render "employees/shared/links"
+          = link_to "Forgot your password?", new_employee_password_path

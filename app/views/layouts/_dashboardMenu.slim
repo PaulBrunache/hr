@@ -1,12 +1,22 @@
 .ui.icon.menu.bg-gradient-main
   #welcome.menu.item
-    / img.ui.fluid.image.shadow alt="Background" height="100%" src="/assets/background-6ea1d099cdaeba8e2b6cd947611b89a0f3b2dac4c5725a77e9a701736cdccef1.png" width="100%" /
   .right.labeled.menu.red
-    a.item
-      i.user.icon
-      | Profile
-    = link_to destroy_human_resource_session_path, method: :delete, class: "item"
-      i.lock.icon		    
-      | Logout	
+    - if params[:controller] == "human_resources/dashboard"
+      / - puts "the world is #{params[:controller]}\n\n" 
+      
+      = link_to edit_human_resource_registration_path, class: "item"
+        i.user.icon
+        | Profile  
+      = link_to destroy_human_resource_session_path, method: :delete, class: "item"
+        i.lock.icon		    
+        | Logout	
+    - else
+      a.item
+        i.user.icon
+        | Profile
+      = link_to destroy_employee_session_path, method: :delete, class: "item"
+        i.lock.icon		    
+        | Logout	
+      
 #dashboard-sidebar
   == render 'layouts/sidebar'
