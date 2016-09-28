@@ -1,6 +1,7 @@
 module ApplicationHelper
   def reroute(controller)
-    routes = ['hr/dashboard','employees/dashboard']
+    routes = ['human_resources/dashboard','employees/dashboard', 'devise/registrations']
+    puts "\n controller is: \n\n #{controller}"
     routes.include? controller
   end
 end

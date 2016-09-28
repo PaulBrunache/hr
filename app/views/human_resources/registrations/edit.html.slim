@@ -1,42 +1,53 @@
-h2
-  | Edit 
-  = resource_name.to_s.humanize
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    div
-      | Currently waiting confirmation for: 
-      = resource.unconfirmed_email
-  .field
-    = f.label :password
-    i
-      | (leave blank if you don't want to change it)
-    br
-    = f.password_field :password, autocomplete: "off"
-    - if @minimum_password_length
-      br
-      em
-        = @minimum_password_length
-        |  characters minimum
-  .field
-    = f.label :password_confirmation
-    br
-    = f.password_field :password_confirmation, autocomplete: "off"
-  .field
-    = f.label :current_password
-    i
-      | (we need your current password to confirm your changes)
-    br
-    = f.password_field :current_password, autocomplete: "off"
-  .actions
-    = f.submit "Update"
-h3
-  | Cancel my account
-p
-  | Unhappy? 
-  = button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete
-= link_to "Back", :back
+.ui.segment
+  .ui.info.message
+    .header
+    | Manage Profile
+    ul.list 
+      li 
+        |Admin password must be a minimum of 6 characters long 
+      li 
+        |Leave new password field blank unless you would like to change your password
+
+.ui.segment
+  .ui.column.centered.middle.aligned.very.relaxed.stackable.grid
+    .ten.wide.column 
+      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class:'ui form' }) do |f|
+        = devise_error_messages!
+        h4.ui.dividing.header User Info
+        br
+        .field
+          .ui.left.icon.input
+            = f.email_field :email, autofocus: true, placeholder: 'Enter your email' 
+            i.user.icon
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          div
+            | Currently waiting confirmation for: 
+            = resource.unconfirmed_email
+        .field
+          .ui.left.icon.input
+            = f.password_field :current_password, autocomplete: "off", placeholder: 'current password'
+            i.lock.icon
+        br
+        .field
+          h4.ui.dividing.header Enter New Password
+        .two.fields
+          .field
+            .ui.left.icon.input
+              = f.password_field :password_confirmation, autocomplete: "off", placeholder: "Enter password"
+              i.lock.icon
+          .field
+            .ui.left.icon.input
+              = f.password_field :password, autocomplete: "off", placeholder: "confirm new password" 
+              i.lock.icon
+        br
+      
+        .field 
+          button.ui.teal.button name="send" type="submit" 
+            i.icon.send
+            | Update Account
+
+          = button_to("Cancel my account", registration_path(resource_name), class: 'ui basic red button', method: :delete, data: {confirm: "Are you sure?"})
+
+        
+        
+    

@@ -1,7 +1,7 @@
 .ui.icon.menu.bg-gradient-main
   #welcome.menu.item
   .right.labeled.menu.red
-    - if params[:controller] == "human_resources/dashboard"
+    - if params[:controller] == 'human_resources/dashboard'
       / - puts "the world is #{params[:controller]}\n\n" 
       
       = link_to edit_human_resource_registration_path, class: "item"
@@ -11,7 +11,7 @@
         i.lock.icon		    
         | Logout	
     - else
-      a.item
+      = link_to edit_employee_registration_path, class: "item"
         i.user.icon
         | Profile
       = link_to destroy_employee_session_path, method: :delete, class: "item"

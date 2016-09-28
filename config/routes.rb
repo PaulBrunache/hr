@@ -18,15 +18,13 @@ Rails.application.routes.draw do
   }
 
 
-
+  #Employees custom routes
   get 'employee/dashboard/index',to: 'employees/dashboard#index'
-
-
+  #HR custom routes
   get 'hr/dashboard/manageReferrals',to: 'human_resources/dashboard#manageReferrals'
   get 'hr/dashboard/manageAdmins',to: 'human_resources/dashboard#manageAdmins'
   get 'hr/dashboard/leaderboard',to: 'human_resources/dashboard#leaderboard'
   get 'hr/dashboard/profile',to: 'human_resources/dashboard#profile'
-
-
+  post 'validate_admin', to: 'human_resources/dashboard#create_hr'
 
 end
