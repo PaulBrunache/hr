@@ -4,13 +4,13 @@
     | Manage Profile
     ul.list 
       li 
-        |Admin password must be a minimum of 6 characters long 
+        |Your password must be a minimum of 6 characters long 
       li 
         |Leave new password field blank unless you would like to change your password
 
 .ui.segment
   .ui.column.centered.middle.aligned.very.relaxed.stackable.grid
-    .ten.wide.column 
+    .nine.wide.column 
       = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class:'ui form' }) do |f|
         = devise_error_messages!
         h4.ui.dividing.header User Info
@@ -30,6 +30,7 @@
         br
         .field
           h4.ui.dividing.header Enter New Password
+        br
         .two.fields
           .field
             .ui.left.icon.input
@@ -40,7 +41,6 @@
               = f.password_field :password, autocomplete: "off", placeholder: "confirm new password" 
               i.lock.icon
         br
-      
         .field 
           button.ui.teal.button name="send" type="submit" 
             i.icon.send
