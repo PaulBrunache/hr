@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
   #Employees custom routes
   get 'employee/dashboard/index',to: 'employees/dashboard#index'
+  get 'employee/dashboard/my-referrals',to: 'employees/dashboard#my_referrals'
+
   #HR custom routes
   get 'hr/dashboard/manageReferrals',to: 'human_resources/dashboard#manageReferrals'
   get 'hr/dashboard/manageAdmins',to: 'human_resources/dashboard#manageAdmins'

@@ -1,8 +1,8 @@
 .ui.secondary.vertical.large.menu
-  a.item href= hr_dashboard_manageReferrals_path
+  = link_to employee_dashboard_index_path, class: "item"
     i.dashboard.icon
     | Dashboard
-  a.large.item href=hr_dashboard_leaderboard_path
+  a.large.item href=employee_dashboard_my_referrals_path
     i.signal.red.icon
     | My referrals
   = link_to edit_employee_registration_path, class: "item"

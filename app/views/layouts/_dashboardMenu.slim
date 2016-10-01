@@ -1,5 +1,6 @@
 .ui.icon.menu.bg-gradient-main
-  #welcome.menu.item
+  #welcome
+    = link_to "", root_path, class: "menu item"
   .right.labeled.menu.red
     - if params[:controller] == 'human_resources/dashboard'
       / - puts "the world is #{params[:controller]}\n\n" 

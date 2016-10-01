@@ -3,4 +3,6 @@ class Employees::DashboardController < ApplicationController
 
   def index
   end
+  def my_referrals
+  end
 end
