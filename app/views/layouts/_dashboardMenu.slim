@@ -19,4 +19,8 @@
         | Logout	
       
 #dashboard-sidebar
-  == render 'layouts/sidebar'
+  
+  - if is_hr_logged_in?(params[:controller])
+    == render 'layouts/hr_sidebar'
+  - else
+    == render 'layouts/employee_sidebar'

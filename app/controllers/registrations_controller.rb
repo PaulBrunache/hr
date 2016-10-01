@@ -5,7 +5,7 @@ class RegistrationsController < Devise::RegistrationsController
     # end
     #
     def after_update_path_for(resource)
-      puts "\n\nit's not working ???? #{resource}\n\n"
+      puts "\n\nit's not working ???? #{resource.to}\n\n"
       hr_dashboard_manageReferrals_path
     end
 

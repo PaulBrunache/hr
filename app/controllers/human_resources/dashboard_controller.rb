@@ -24,4 +24,5 @@ class HumanResources::DashboardController < ApplicationController
 
   def profile
   end
+
 end
