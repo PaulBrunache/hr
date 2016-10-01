@@ -16,8 +16,7 @@ body
         == render 'layouts/dashboardMenu'
       #content
         - flash.each do |key, value|
-            .ui.warning.message
-              p = value
+          = content_tag :div, value, class: "ui #{key} message"
         .ui-container
           = yield 
     - else
@@ -25,8 +24,7 @@ body
         == render 'layouts/homeMenu'
       #content-not-dash
         - flash.each do |key, value|
-            .ui.warning.message
-              p = value
+          = content_tag :div, value, class: "ui #{key} message"
         .ui-container
           = yield 
 

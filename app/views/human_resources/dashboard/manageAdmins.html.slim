@@ -12,11 +12,7 @@
       | Admin Creation Instructions
       ul.list 
         li 
-          |Admin password must be a minimum of 6 characters long 
-        li 
-          |No fields can be ommitted 
-        li 
-          |Passwords must match
+          |Passwords will be sent VIA email
     
 
 = form_tag validate_admin_path do
@@ -25,18 +21,20 @@
       .column
         .ui.form
           .field
-            h4.ui.dividing.header Create A New Administrators
+            h4.ui.dividing.header Create A Resource
             .ui.left.icon.input
               = email_field_tag 'admin_email', nil,placeholder: 'Enter your Email'
               i.user.icon
+          
           .field
-            .ui.left.icon.input
-              = password_field_tag 'password', nil,placeholder: 'Enter a password'
-              i.lock.icon
-          .field
-            .ui.left.icon.input
-              = password_field_tag 'password_confirmation', nil,placeholder: 'Confirm password'
-              i.lock.icon
+            .ui.selection.dropdown
+              input name="role" type="hidden" /
+              i.dropdown.icon
+              .default.text Select Resource Role
+              .menu
+                .item value="Human Resources"  Human Resources
+                .item value="Concierge"  Concierge
+
           .field
              button.ui.basic.submit.button name="send" type="submit"
                i.icon.send

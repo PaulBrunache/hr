@@ -9,13 +9,18 @@ class HumanResources::DashboardController < ApplicationController
   end
 
   def create_hr
-    begin
-      @admin = HumanResource.new(email: params[:admin_email],
-      password: params[:password], password_confirmation: params[:password_confirmation])
+    puts "\n\nThe parameters passed:\n #{params.inspect}\n\n"
+    password = generate_password
+
+    @admin = HumanResource.new(email: params[:admin_email],
+    password: password, password_confirmation: password, role: params[:role])
+
+    if @admin.valid?
       @admin.save!
       flash[:success] = "Admin was successfully created"
-    rescue
-      render :manage_admin
+      render :manageAdmins
+    else
+      render :manageAdmins
     end
   end
 
@@ -25,4 +30,8 @@ class HumanResources::DashboardController < ApplicationController
   def profile
   end
 
+  private
+    def generate_password
+      Devise.friendly_token.first(6)
+    end
 end
