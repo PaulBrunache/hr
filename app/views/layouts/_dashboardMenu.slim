@@ -11,15 +11,11 @@
         i.lock.icon		    
         | Logout	
     - else
-      = link_to edit_employee_registration_path, class: "item"
-        i.user.icon
-        | Profile
       = link_to destroy_employee_session_path, method: :delete, class: "item"
         i.lock.icon		    
         | Logout	
       
 #dashboard-sidebar
-  
   - if is_hr_logged_in?(params[:controller])
     == render 'layouts/hr_sidebar'
   - else
