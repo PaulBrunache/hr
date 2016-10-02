@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 20160925183049) do
   end
 
   create_table "job_postings", force: :cascade do |t|
-    t.string   "name"
+    t.string   "title"
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -85,9 +85,11 @@ ActiveRecord::Schema.define(version: 20160925183049) do
     t.text     "hr_screening",    default: "{\"not_qualified\":false,\"qualified\":false,\"moved_to_interview\":false}"
     t.text     "interviewing",    default: "{\"hired_hourly\":false,\"hired_salaried\":false,\"hired_hard_to_fill\":false,\"not_selected_eligible\":false,\"not_selected_ineligible\":false}"
     t.integer  "employee_id"
+    t.integer  "job_posting_id"
     t.datetime "created_at",                                                                                                                                                                   null: false
     t.datetime "updated_at",                                                                                                                                                                   null: false
     t.index ["employee_id"], name: "index_referrals_on_employee_id"
+    t.index ["job_posting_id"], name: "index_referrals_on_job_posting_id"
   end
 
 end

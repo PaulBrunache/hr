@@ -14,10 +14,11 @@ p
   = @referral.phone_number
 p
   strong Employee:
-  = @referral.employee
+  = @referral.employee.first_name
 p
   strong Position:
-  = @referral.position
+  - job_name = JobPosting.where(id: @referral.job_posting_id).first
+  = job_name.title
 
 = link_to 'Edit', edit_referral_path(@referral)
 '|

@@ -38,6 +38,7 @@ class CreateReferrals < ActiveRecord::Migration[5.0]
       }.to_json
 
       t.references :employee, foreign_key: true
+      t.references :job_posting, foreign_key: true
       t.timestamps
     end
   end

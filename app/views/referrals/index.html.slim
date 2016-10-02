@@ -20,8 +20,9 @@ table
         td = referral.last_name
         td = referral.email
         td = referral.phone_number
-        td = referral.employee
-        td = referral.position
+        td = referral.employee.first_name
+        - job_name = JobPosting.where(id: @referral.job_posting_id).first
+        td = job_name.title
         td = link_to 'Show', referral
         td = link_to 'Edit', edit_referral_path(referral)
         td = link_to 'Destroy', referral, data: { confirm: 'Are you sure?' }, method: :delete

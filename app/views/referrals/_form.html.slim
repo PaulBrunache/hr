@@ -19,9 +19,6 @@
     = f.label :phone_number
     = f.text_field :phone_number
   .field
-    = f.label :employee
-    = f.text_field :employee
-  .field
-    = f.label :position
-    = f.text_field :position
+    
+    = f.collection_select :job_posting_id, JobPosting.all,:id, :title, {prompt: 'Select Job'}, {class: 'ui search dropdown'}
   .actions = f.submit

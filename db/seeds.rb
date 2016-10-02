@@ -7,3 +7,15 @@ department_list = ["Foundation","Executive","FINANCE","HR","IT","MEA","Grant","K
 department_list.each do |department|
   Department.create!( name: department)
 end
+
+job_list= [
+  {title: "Assistant" ,
+  description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."},
+  {title: "Front Desk" ,
+  description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."},
+  {title: "Attendant" ,
+  description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}
+]
+job_list.collect do |job|
+  JobPosting.create!( title: job[:title], description: job[:description])
+end
