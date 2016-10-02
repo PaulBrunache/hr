@@ -4,12 +4,7 @@ table.ui.sortable.celled.table
       th Employee Name
       th.sorted.ascending Total Point
   tbody
+  - @employee_list.each do |employee|
     tr
-      td Jamie
-      td Approved
-    tr
-      td Jill
-      td Denied
-    tr
-      td John
-      td No Action
+      td = "#{employee.first_name.capitalize} #{employee.last_name.capitalize}"
+      td = employee.points

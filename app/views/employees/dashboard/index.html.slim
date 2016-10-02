@@ -1,29 +1,24 @@
 #admin_dashboard.ui.segment
   .ui.four.centered.cards
-    .card
-      .blurring.dimmable.image
-        .ui.dimmer
-          .content
-            .center
-              .description hello goodbye a lorem
-        img alt="Interface" src="/assets/svg/interface-9345ec3f98d2dfd9e03f8cb788897b79b442ba1f1c402ea3bc3aa8c3bb77b35b.svg" /
+    .ui.card
+      a.image href=new_referral_path
+        = image_tag("svg/user.svg")
       .content
-        a.header href="/admin/manage"  View Referral Status
-    .card
-      .blurring.dimmable.image
-        .ui.dimmer
-          .content
-            .center
-              .description hello goodbye a lorem
-        img alt="User" src="/assets/svg/user-4172bf9ad96a95081960fa52d5cbec8599e63e533af765b9c988ebda74d4292b.svg" /
+        a.header href=new_referral_path  Refer a Friend
+        .meta
+          a Help us get the best
+    .ui.card
+      a.image href='#'
+        = image_tag("svg/medal.svg")
       .content
-        a.header href="/admin/leaderboard"  Submit A referral
-    .card
-      .blurring.dimmable.image
-        .ui.dimmer
-          .content
-            .center
-              .description hello goodbye a lorem
-        img alt="User" src="/assets/svg/user-4172bf9ad96a95081960fa52d5cbec8599e63e533af765b9c988ebda74d4292b.svg" /
+        a.header href=new_referral_path  View Points
+        .meta
+          a This shows your total points
+        
+    .ui.card
+      a.image href=employee_dashboard_my_referrals_path
+        = image_tag("svg/settings-1.svg")
       .content
-        a.header href="/admin/leaderboard"  View Points
+        a.header href=employee_dashboard_my_referrals_path  Manage Referrals
+        .meta
+          a Update Referral info

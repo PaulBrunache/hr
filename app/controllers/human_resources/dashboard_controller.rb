@@ -25,6 +25,7 @@ class HumanResources::DashboardController < ApplicationController
   end
 
   def leaderboard
+    @employee_list = Employee.order(points: :asc)
   end
 
   def profile
