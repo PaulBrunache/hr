@@ -19,15 +19,17 @@ class ReferralsController < ApplicationController
   def create
     @referral = Referral.new(referral_params)
     @referral.employee_id = current_employee.id if current_employee
-
+    puts "\n\nI am in create\n\n"
     if @referral.save
-      redirect_to @referral, notice: 'Referral was successfully created.'
+      flash[:success] = "Referral was successfully submitted"
+      render :new
     else
       render :new
     end
   end
 
   def update
+    puts "\n\nI am in update\n\n"
     if @referral.update(referral_params)
       redirect_to @referral, notice: 'Referral was successfully updated.'
     else

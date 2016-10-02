@@ -17,7 +17,7 @@ class HumanResources::DashboardController < ApplicationController
 
     if @admin.valid?
       @admin.save!
-      flash[:success] = "Admin was successfully created"
+      flash[:success] = "HR Admin was successfully created"
       render :manageAdmins
     else
       render :manageAdmins

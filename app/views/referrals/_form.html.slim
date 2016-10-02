@@ -1,24 +1,29 @@
-= form_for @referral do |f|
-  - if @referral.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@referral.errors.count, "error")} prohibited this referral from being saved:"
-      ul
-        - @referral.errors.full_messages.each do |message|
-          li = message
-
-  .field
-    = f.label :first_name
-    = f.text_field :first_name
-  .field
-    = f.label :last_name
-    = f.text_field :last_name
-  .field
-    = f.label :email
-    = f.text_field :email
-  .field
-    = f.label :phone_number
-    = f.text_field :phone_number
-  .field
-    
-    = f.collection_select :job_posting_id, JobPosting.all,:id, :title, {prompt: 'Select Job'}, {class: 'ui search dropdown'}
-  .actions = f.submit
+.ui.segment
+  .ui.column.centered.middle.aligned.very.relaxed.stackable.grid
+    .twelve.wide.column 
+      = form_for @referral, html: { class:'ui form' } do |f|
+        - if @referral.errors.any?
+          #error_explanation
+            h2 = "#{pluralize(@referral.errors.count, "error")} prohibited this referral from being saved:"
+            ul
+              - @referral.errors.full_messages.each do |message|
+                li = message
+        .two.fields
+          .field
+            = f.label :first_name
+            = f.text_field :first_name
+          .field
+            = f.label :last_name
+            = f.text_field :last_name
+        .two.fields
+          .field
+            = f.label :email
+            = f.text_field :email
+          .field
+            = f.label :phone_number
+            = f.text_field :phone_number
+        .field
+          = f.collection_select :job_posting_id, JobPosting.all,:id, :title, {prompt: 'Select Job'}, {class: 'ui search dropdown'}
+        .field 
+          = f.submit class: "ui teal button"
+  
