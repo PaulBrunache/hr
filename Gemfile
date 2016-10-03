@@ -10,13 +10,9 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'devise'
-
-group :test, :development do
-  gem 'sqlite3'
-end
+gem 'pg'
 
 group :production do
   gem 'rails_12factor'
   gem 'puma'
-  gem 'pg'
 end

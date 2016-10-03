@@ -14,5 +14,5 @@
     | Manage Jobs
     .menu
       .header Manage Postings
-      a.item Create New Posting
-      a.item Edit Existing Posts
+      = link_to "Create New Posting", new_job_posting_path, class: 'item'
+      = link_to "Edit Existing Jobs", job_postings_path, class: 'item'

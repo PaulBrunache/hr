@@ -1,39 +1,36 @@
 class JobPostingsController < ApplicationController
   before_action :set_job_posting, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_human_resource!, only: [:new,:update,:create, :destroy]
 
-  # GET /job_postings
   def index
     @job_postings = JobPosting.all
   end
 
-  # GET /job_postings/1
   def show
   end
 
-  # GET /job_postings/new
   def new
     @job_posting = JobPosting.new
   end
 
-  # GET /job_postings/1/edit
   def edit
   end
 
-  # POST /job_postings
   def create
     @job_posting = JobPosting.new(job_posting_params)
 
     if @job_posting.save
-      redirect_to @job_posting, notice: 'Job posting was successfully created.'
+      flash[:success] = "Job was successfully Created"
+      redirect_to job_postings_path
     else
       render :new
     end
   end
 
-  # PATCH/PUT /job_postings/1
   def update
     if @job_posting.update(job_posting_params)
-      redirect_to @job_posting, notice: 'Job posting was successfully updated.'
+      flash[:success] = "Job was successfully Updated"
+      redirect_to job_postings_path
     else
       render :edit
     end
@@ -42,7 +39,8 @@ class JobPostingsController < ApplicationController
   # DELETE /job_postings/1
   def destroy
     @job_posting.destroy
-    redirect_to job_postings_url, notice: 'Job posting was successfully destroyed.'
+    flash[:success] = "Job was successfully Deleted"
+    redirect_to job_postings_path
   end
 
   private
@@ -53,6 +51,6 @@ class JobPostingsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def job_posting_params
-      params.require(:job_posting).permit(:name, :description)
+      params.require(:job_posting).permit(:title, :description)
     end
 end

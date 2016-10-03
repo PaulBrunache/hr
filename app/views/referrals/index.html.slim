@@ -1,32 +1,14 @@
-h1 Listing referrals
-
-table
+table.ui.sortable.celled.table
   thead
     tr
-      th First name
-      th Last name
-      th Email
-      th Phone number
-      th Employee
-      th Position
-      th
-      th
-      th
-
+      th Referral Name
+      th.sorted.ascending Referral Positing
+      th.sorted.ascending status
+      th Actions
   tbody
-    - @referrals.each do |referral|
-      tr
-        td = referral.first_name
-        td = referral.last_name
-        td = referral.email
-        td = referral.phone_number
-        td = referral.employee.first_name
-        - job_name = JobPosting.where(id: @referral.job_posting_id).first
-        td = job_name.title
-        td = link_to 'Show', referral
-        td = link_to 'Edit', edit_referral_path(referral)
-        td = link_to 'Destroy', referral, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
-
-= link_to 'New Referral', new_referral_path
+  - @employee_referral_list.each do |referral|
+    tr
+      td = "#{referral.first_name.capitalize} #{referral.last_name.capitalize}"
+      td = get_job_name(referral.job_posting_id)
+      td = get_referral_status(referral.id,referral.status)
+      td = link_to 'Edit', edit_referral_path(referral), class: "ui basic teal button"

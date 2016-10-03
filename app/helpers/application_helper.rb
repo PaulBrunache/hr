@@ -1,6 +1,6 @@
 module ApplicationHelper
   def reroute(controller)
-    routes = ['human_resources/dashboard','employees/dashboard', 'referrals']
+    routes = ['human_resources/dashboard','employees/dashboard', 'referrals','job_postings']
     puts "\n controller is: #{controller}\n\n "
     actions = ['edit']
     if routes.include?(controller) or current_page?(edit_human_resource_registration_path) or
@@ -12,7 +12,7 @@ module ApplicationHelper
   end
 
   def is_hr_logged_in?(controller)
-      if controller == 'human_resources/dashboard'
+      if controller == 'human_resources/dashboard' or controller == 'job_postings'
         true
       else
         false

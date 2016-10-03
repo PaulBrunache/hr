@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20160925183049) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "departments", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -37,9 +40,9 @@ ActiveRecord::Schema.define(version: 20160925183049) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.index ["department_id"], name: "index_employees_on_department_id"
-    t.index ["email"], name: "index_employees_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
+    t.index ["department_id"], name: "index_employees_on_department_id", using: :btree
+    t.index ["email"], name: "index_employees_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true, using: :btree
   end
 
   create_table "human_resources", force: :cascade do |t|
@@ -58,14 +61,14 @@ ActiveRecord::Schema.define(version: 20160925183049) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                                         null: false
     t.datetime "updated_at",                                         null: false
-    t.index ["email"], name: "index_human_resources_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_human_resources_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_human_resources_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_human_resources_on_reset_password_token", unique: true, using: :btree
   end
 
   create_table "jobPostings_referrals", id: false, force: :cascade do |t|
     t.integer "job_posting_id", null: false
     t.integer "referral_id",    null: false
-    t.index ["job_posting_id", "referral_id"], name: "index_jobPostings_referrals_on_job_posting_id_and_referral_id"
+    t.index ["job_posting_id", "referral_id"], name: "index_jobPostings_referrals_on_job_posting_id_and_referral_id", using: :btree
   end
 
   create_table "job_postings", force: :cascade do |t|
@@ -88,8 +91,8 @@ ActiveRecord::Schema.define(version: 20160925183049) do
     t.integer  "job_posting_id"
     t.datetime "created_at",                                                                                                                                                                   null: false
     t.datetime "updated_at",                                                                                                                                                                   null: false
-    t.index ["employee_id"], name: "index_referrals_on_employee_id"
-    t.index ["job_posting_id"], name: "index_referrals_on_job_posting_id"
+    t.index ["employee_id"], name: "index_referrals_on_employee_id", using: :btree
+    t.index ["job_posting_id"], name: "index_referrals_on_job_posting_id", using: :btree
   end
 
 end

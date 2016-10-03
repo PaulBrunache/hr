@@ -1,15 +1,19 @@
-= form_for @job_posting do |f|
-  - if @job_posting.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@job_posting.errors.count, "error")} prohibited this job_posting from being saved:"
-      ul
-        - @job_posting.errors.full_messages.each do |message|
-          li = message
+.ui.segment
+  .ui.column.centered.middle.aligned.very.relaxed.stackable.grid
+    .twelve.wide.column 
+      = form_for @job_posting, html: { class:'ui form' } do |f|
+        - if @job_posting.errors.any?
+          #error_explanation
+            h2 = "#{pluralize(@job_posting.errors.count, "error")} prohibited this job_posting from being saved:"
+            ul
+              - @job_posting.errors.full_messages.each do |message|
+                li = message
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :description
-    = f.text_area :description
-  .actions = f.submit
+        .field
+          = f.label :title
+          = f.text_field :title
+        .field
+          = f.label :description
+          = f.text_area :description
+        .field 
+          = f.submit class: "ui teal button"
