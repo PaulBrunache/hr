@@ -4,3 +4,6 @@ $(document).on 'turbolinks:load', ->
   $('.tabular.menu .item').tab()
   $('.ui.active.modal').modal('show')
   $('table').tablesort()
+  $('.ui.modal').modal 'show'
+  # $('.trigger.example .accordion').accordion selector: trigger: '.title .icon'
+  $('.ui.accordion').accordion()

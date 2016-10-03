@@ -22,16 +22,16 @@ class ReferralsController < ApplicationController
     puts "\n\nI am in create\n\n"
     if @referral.save
       flash[:success] = "Referral was successfully submitted"
-      render :new
+      redirect_to employee_dashboard_my_referrals_path
     else
       render :new
     end
   end
 
   def update
-    puts "\n\nI am in update\n\n"
     if @referral.update(referral_params)
-      redirect_to @referral, notice: 'Referral was successfully updated.'
+      flash[:success] = "Referral was successfully submitted"
+      redirect_to employee_dashboard_my_referrals_path
     else
       render :edit
     end

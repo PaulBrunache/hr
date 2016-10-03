@@ -2,6 +2,8 @@ class HumanResources::DashboardController < ApplicationController
   before_action :authenticate_human_resource!
 
   def manageReferrals
+    @referral_list = Referral.all
+    @referral_count = @referral_list.size
   end
 
   def manageAdmins
@@ -29,6 +31,15 @@ class HumanResources::DashboardController < ApplicationController
   end
 
   def profile
+  end
+  #Phases
+  def phase_one
+    puts "\n\nThese are the Params: \n #{params.to_json}\n\n"
+  end
+  def phase_two
+
+  end
+  def phase_three
   end
 
   private

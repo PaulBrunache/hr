@@ -18,4 +18,17 @@ module ApplicationHelper
         false
       end
   end
+  def get_job_name(id)
+    job = JobPosting.where(id: id).first
+    job.title
+  end
+  def get_referral_count(role)
+    if role == "Human Resources"
+      referral = Referral.where("status@> = ?", {pending: true}.to_json)
+      size = referral.size
+    else
+      referral = Referral.all
+      size = referral.size
+    end
+  end
 end

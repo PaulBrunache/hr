@@ -27,6 +27,11 @@ Rails.application.routes.draw do
   get 'hr/dashboard/manageAdmins',to: 'human_resources/dashboard#manageAdmins'
   get 'hr/dashboard/leaderboard',to: 'human_resources/dashboard#leaderboard'
   get 'hr/dashboard/profile',to: 'human_resources/dashboard#profile'
+  #Forms
   post 'validate_admin', to: 'human_resources/dashboard#create_hr'
+  post 'phase_one', to: 'human_resources/dashboard#phase_one'
+  post 'phase_two', to: 'human_resources/dashboard#phase_two'
+  post 'phase_three', to: 'human_resources/dashboard#phase_Three'
+
 
 end

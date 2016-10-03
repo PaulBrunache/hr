@@ -4,9 +4,11 @@ table.ui.sortable.celled.table
       th Referral Name
       th.sorted.ascending Referral Positing
       th.sorted.ascending status
+      th Actions
   tbody
   - @employee_referral_list.each do |referral|
     tr
       td = "#{referral.first_name.capitalize} #{referral.last_name.capitalize}"
       td = get_job_name(referral.job_posting_id)
       td = get_referral_status(referral.id,referral.status)
+      td = link_to 'Edit', edit_referral_path(referral), class: "ui basic teal button"
