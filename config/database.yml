@@ -8,13 +8,13 @@ default: &default
   adapter: postgresql
   pool: 5
   timeout: 5000
-  encoding: unicode
+  encoding: SQL_ASCII
 
 
 development:
   <<: *default
   database: hr_dev
-  username: paul
+  username: ubuntu
   password:
 
 # Warning: The database defined as "test" will be erased and
@@ -23,7 +23,7 @@ development:
 test:
   <<: *default
   database: hr_test
-  username: paul
+  username: ubuntu
   password:
 
 production:
