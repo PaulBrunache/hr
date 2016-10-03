@@ -12,7 +12,8 @@ module ApplicationHelper
   end
 
   def is_hr_logged_in?(controller)
-      if controller == 'human_resources/dashboard' or controller == 'job_postings'
+      if controller == 'human_resources/dashboard' or controller == 'job_postings' or
+        current_page?(edit_human_resource_registration_path)
         true
       else
         false
