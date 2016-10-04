@@ -11,9 +11,7 @@ class HumanResources::DashboardController < ApplicationController
   end
 
   def create_hr
-    puts "\n\nThe parameters passed:\n #{params.inspect}\n\n"
     password = generate_password
-
     @admin = HumanResource.new(email: params[:admin_email],
     password: password, password_confirmation: password, role: params[:role])
 
@@ -21,6 +19,7 @@ class HumanResources::DashboardController < ApplicationController
       @admin.save!
       flash[:success] = "HR Admin was successfully created"
       render :manageAdmins
+      @admin.send_reset_password_instructions
     else
       render :manageAdmins
     end
