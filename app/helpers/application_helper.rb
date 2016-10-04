@@ -32,4 +32,12 @@ module ApplicationHelper
       size = referral.size
     # end
   end
+  
+  def list_has_data?(list)
+    if list.size == 0 
+      false
+    else 
+      true
+    end
+  end
 end

@@ -10,24 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161004063321) do
+ActiveRecord::Schema.define(version: 20160925183049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "bootsy_image_galleries", force: :cascade do |t|
-    t.string   "bootsy_resource_type"
-    t.integer  "bootsy_resource_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "bootsy_images", force: :cascade do |t|
-    t.string   "image_file"
-    t.integer  "image_gallery_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "departments", force: :cascade do |t|
     t.string   "name"

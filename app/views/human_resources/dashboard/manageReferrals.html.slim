@@ -1,68 +1,70 @@
 .ui.segment
-  .ui.styled.fluid.accordion
-    - @referral_list.each do |referral|
-      .title
-        i.dropdown.icon
-        = "#{referral.first_name.capitalize} #{referral.last_name.capitalize}"
-      .content
-        .transition.hidden 
-          = form_tag phase_one_path do
-            .ui.fluid.form
-              .two.fields
-                .field
-                  .ui.segment
-                    .grouped.fields
-                      label This Referral has been contacted?
-                      .field
-                        .ui.slider.checkbox
-                          / check_box_tag(name, value = "1", checked = false, options = {})
-                          = check_box_tag("contacted1", true, referral[:contacted1], disable: referral[:contacted2])
-                          label Contacted Once
-                      .field
-                        .ui.slider.checkbox
-                          = check_box_tag("contacted2", true, referral[:contacted2], disable: referral[:contacted2])
-                          label Contacted Twice
-                      .field
-                        .ui.slider.checkbox
-                          = check_box_tag("contacted3", true, referral[:contacted2], disable: referral[:contacted2])
-                          label Contacted Three Times
-                    .grouped.fields
-                      / radio_button_tag(name, value, checked = false, options = {}) public
-                      label Careful this will delete the users
-                      .field
-                        .ui.slider.checkbox
-                          = check_box_tag("unqualified", true,false)
-                          label Unqualified
-                      .field
-                        .ui.slider.checkbox
-                          = check_box_tag("sent_to_hr", true,false)
-                          label Send To HR
-                .field          
-                  .ui.card
-                    .content
-                      h4.ui.sub.header Referral Info
-                      .ui.small.feed
-                        .event
-                          .content
-                            .summary                      
-                              |Name:
-                              a &nbsp &nbsp &nbsp &nbsp &nbsp #{referral.first_name.capitalize} #{referral.last_name.capitalize}
-                              br
-                              br
-                              |Phone:     
-                              a &nbsp &nbsp &nbsp &nbsp #{referral.phone_number}
-                              br
-                              br
-                              |Position:    
-                              a &nbsp &nbsp #{get_job_name(referral.job_posting_id)}
-                        
-            .field
-               button.ui.basic.submit.button name="send" type="submit"
-                 i.icon.send
-                 |Update
-          
-                    
-                    
-          
+  - if list_has_data? @referral_list
+    .ui.styled.fluid.accordion
+      - @referral_list.each do |referral|
+        .title
+          i.dropdown.icon
+          = "#{referral.first_name.capitalize} #{referral.last_name.capitalize}"
+        .content
+          .transition.hidden 
+            = form_tag phase_one_path do
+              .ui.fluid.form
+                .two.fields
+                  .field
+                    .ui.segment
+                      .grouped.fields
+                        label This Referral has been contacted?
+                        .field
+                          .ui.slider.checkbox
+                            / check_box_tag(name, value = "1", checked = false, options = {})
+                            = check_box_tag("contacted1", true, referral[:contacted1], disable: referral[:contacted2])
+                            label Contacted Once
+                        .field
+                          .ui.slider.checkbox
+                            = check_box_tag("contacted2", true, referral[:contacted2], disable: referral[:contacted2])
+                            label Contacted Twice
+                        .field
+                          .ui.slider.checkbox
+                            = check_box_tag("contacted3", true, referral[:contacted2], disable: referral[:contacted2])
+                            label Contacted Three Times
+                      .grouped.fields
+                        / radio_button_tag(name, value, checked = false, options = {}) public
+                        label Careful this will delete the users
+                        .field
+                          .ui.slider.checkbox
+                            = check_box_tag("unqualified", true,false)
+                            label Unqualified
+                        .field
+                          .ui.slider.checkbox
+                            = check_box_tag("sent_to_hr", true,false)
+                            label Send To HR
+                  .field          
+                    .ui.card
+                      .content
+                        h4.ui.sub.header Referral Info
+                        .ui.small.feed
+                          .event
+                            .content
+                              .summary                      
+                                |Name:
+                                a &nbsp &nbsp &nbsp &nbsp &nbsp #{referral.first_name.capitalize} #{referral.last_name.capitalize}
+                                br
+                                br
+                                |Phone:     
+                                a &nbsp &nbsp &nbsp &nbsp #{referral.phone_number}
+                                br
+                                br
+                                |Position:    
+                                a &nbsp &nbsp #{get_job_name(referral.job_posting_id)}
+                          
+              .field
+                button.ui.basic.submit.button name="send" type="submit"
+                   i.icon.send
+                   |Update
+  - else 
+     == render 'layouts/nodata'          
+                      
+                      
             
-      
+              
+        
