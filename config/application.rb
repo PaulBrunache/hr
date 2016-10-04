@@ -19,7 +19,14 @@ module Workspace
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
-
+    config.before_configuration do
+        env_file = Rails.root.join("config", 'secrets.yml').to_s
+        if File.exists?(env_file)
+          YAML.load_file(env_file)[Rails.env].each do |key, value|
+            ENV[key.to_s] = value
+          end # end YAML.load_file
+        end # end if File.exists?
+    end # end config.before_configuration
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
   end
