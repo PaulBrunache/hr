@@ -4,9 +4,9 @@ class Employees::RegistrationsController < Devise::RegistrationsController
     #   signed_in_root_path(resource)
     # end
     #
-    # def after_update_path_for(resource)
-    #   signed_in_root_path(resource)
-    # end
+    def after_update_path_for(resource)
+      employee_dashboard_index_path
+    end
     #
     # def after_sign_in_path_for(resource)
     #   welcome_path

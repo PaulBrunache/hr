@@ -1,7 +1,10 @@
 .ui.secondary.vertical.large.menu
+    
+  
   a.item href= hr_dashboard_manageReferrals_path
     | Referrals
     .ui.teal.left.pointing.label = get_referral_count(current_human_resource.role)
+  
   a.large.item href=hr_dashboard_leaderboard_path
     i.signal.red.icon
     | Leaderboard
@@ -9,7 +12,7 @@
     i.chevron.right.yellow.icon
     | Manage HR Admins
     .menu
-      .header HR Admin Option
+      .header Options
       = link_to "Create HR", hr_dashboard_manageAdmins_path, class: 'item'
       = link_to "View HR Admins", hr_dashboard_viewAdmins_path, class: 'item'
   .ui.dropdown.item
