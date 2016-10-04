@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   confirmation: 'verification',sign_up: 'register',edit: 'edit/profile'
   }
 
+
   #Employees custom routes
   get 'employee/dashboard/index',to: 'employees/dashboard#index'
   get 'employee/dashboard/my-referrals',to: 'employees/dashboard#my_referrals'
@@ -25,6 +26,7 @@ Rails.application.routes.draw do
   #HR custom routes
   get 'hr/dashboard/manageReferrals',to: 'human_resources/dashboard#manageReferrals'
   get 'hr/dashboard/manageAdmins',to: 'human_resources/dashboard#manageAdmins'
+  get 'hr/dashboard/viewAdmins',to: 'human_resources/dashboard#viewAdmins'
   get 'hr/dashboard/leaderboard',to: 'human_resources/dashboard#leaderboard'
   get 'hr/dashboard/profile',to: 'human_resources/dashboard#profile'
   #Forms

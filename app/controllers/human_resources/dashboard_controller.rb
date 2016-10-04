@@ -9,6 +9,10 @@ class HumanResources::DashboardController < ApplicationController
   def manageAdmins
     @admin = HumanResource.new
   end
+  def viewAdmins
+    @hr_admin_list = HumanResource.all
+  end
+
 
   def create_hr
     password = generate_password
@@ -28,6 +32,7 @@ class HumanResources::DashboardController < ApplicationController
   def leaderboard
     @employee_list = Employee.order(points: :asc)
   end
+
 
   def profile
   end

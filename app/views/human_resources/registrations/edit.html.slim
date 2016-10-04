@@ -29,6 +29,20 @@
               = f.password_field :current_password, autocomplete: "off", placeholder: 'current password'
               i.lock.icon
         br
+        .two.fields
+          .field
+            .ui.left.icon.input
+              = f.text_field :first_name, autofocus: true, placeholder: 'First Name' 
+              i.user.icon
+          - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+            div
+              | Currently waiting confirmation for: 
+              = resource.unconfirmed_email
+          .field
+            .ui.left.icon.input
+              = f.text_field :last_name, autocomplete: "off", placeholder: 'Last Name'
+              i.user.icon
+        br
         .field
           h4.ui.dividing.header Enter New Password
         br

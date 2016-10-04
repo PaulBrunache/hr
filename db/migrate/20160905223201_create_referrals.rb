@@ -5,15 +5,12 @@ class CreateReferrals < ActiveRecord::Migration[5.0]
       t.string :last_name
       t.string :email
       t.string :phone_number
-
-      t.text :status, default: {
-        pending: true,
-        phone_screening: false,
-        hr_screening: false,
-        interviewing: false,
-        hired: false,
-        unqualified: false
-      }.to_json
+      t.boolean :pending, default: true
+      t.boolean :phone_screening, default: false
+      t.boolean :hr_screening, default: false
+      t.boolean :interviewing , default: false
+      t.boolean :hired , default: false
+      t.boolean :unqualified , default: false
 
       t.text :phone_screening, default: {
         contacted1: false,

@@ -7,7 +7,7 @@ class DeviseCreateEmployees < ActiveRecord::Migration[5.0]
       t.string :employee_number, null: false, default: ""
       t.references :department, index: true, foreign_key: true
       t.string :phone_number
-      t.integer :points
+      t.integer :points, null: false, default: 0
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
 

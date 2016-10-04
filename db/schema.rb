@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160925183049) do
+ActiveRecord::Schema.define(version: 20161004063321) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bootsy_image_galleries", force: :cascade do |t|
+    t.string   "bootsy_resource_type"
+    t.integer  "bootsy_resource_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bootsy_images", force: :cascade do |t|
+    t.string   "image_file"
+    t.integer  "image_gallery_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "departments", force: :cascade do |t|
     t.string   "name"
@@ -27,7 +41,7 @@ ActiveRecord::Schema.define(version: 20160925183049) do
     t.string   "employee_number",        default: "", null: false
     t.integer  "department_id"
     t.string   "phone_number"
-    t.integer  "points"
+    t.integer  "points",                 default: 0,  null: false
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -83,10 +97,12 @@ ActiveRecord::Schema.define(version: 20160925183049) do
     t.string   "last_name"
     t.string   "email"
     t.string   "phone_number"
-    t.text     "status",          default: "{\"pending\":true,\"phone_screening\":false,\"hr_screening\":false,\"interviewing\":false,\"hired\":false,\"unqualified\":false}"
+    t.boolean  "pending",         default: true
     t.text     "phone_screening", default: "{\"contacted1\":false,\"contacted2\":false,\"contacted3\":false,\"unqualified\":false,\"sent_to_hr\":false}"
     t.text     "hr_screening",    default: "{\"not_qualified\":false,\"qualified\":false,\"moved_to_interview\":false}"
     t.text     "interviewing",    default: "{\"hired_hourly\":false,\"hired_salaried\":false,\"hired_hard_to_fill\":false,\"not_selected_eligible\":false,\"not_selected_ineligible\":false}"
+    t.boolean  "hired",           default: false
+    t.boolean  "unqualified",     default: false
     t.integer  "employee_id"
     t.integer  "job_posting_id"
     t.datetime "created_at",                                                                                                                                                                   null: false
@@ -95,4 +111,7 @@ ActiveRecord::Schema.define(version: 20160925183049) do
     t.index ["job_posting_id"], name: "index_referrals_on_job_posting_id", using: :btree
   end
 
+  add_foreign_key "employees", "departments"
+  add_foreign_key "referrals", "employees"
+  add_foreign_key "referrals", "job_postings"
 end

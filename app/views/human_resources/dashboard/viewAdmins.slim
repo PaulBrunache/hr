@@ -1,0 +1,14 @@
+table.ui.sortable.celled.table
+  thead
+    tr
+      th HR Name
+      th Email
+      th.sorted.ascending Role
+      th.sorted.ascending Last Login
+  tbody
+  - @hr_admin_list.each do |hr|
+    tr
+      td = "#{hr.first_name.capitalize} #{hr.last_name.capitalize}"
+      td = hr.email
+      td = hr.role
+      td = hr.last_sign_in_at

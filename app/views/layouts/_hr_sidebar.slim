@@ -5,10 +5,13 @@
   a.large.item href=hr_dashboard_leaderboard_path
     i.signal.red.icon
     | Leaderboard
-  a.item href= hr_dashboard_manageAdmins_path
-    i.add.user.teal.icon
-    | Create HR
-
+  .ui.dropdown.item
+    i.chevron.right.yellow.icon
+    | Manage HR Admins
+    .menu
+      .header HR Admin Option
+      = link_to "Create HR", hr_dashboard_manageAdmins_path, class: 'item'
+      = link_to "View HR Admins", hr_dashboard_viewAdmins_path, class: 'item'
   .ui.dropdown.item
     i.chevron.right.yellow.icon
     | Manage Jobs

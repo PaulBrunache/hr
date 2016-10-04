@@ -1,10 +1,18 @@
-table.ui.sortable.celled.table
-  thead
-    tr
-      th Employee Name
-      th.sorted.ascending Total Point
-  tbody
-  - @employee_list.each do |employee|
-    tr
-      td = "#{employee.first_name.capitalize} #{employee.last_name.capitalize}"
-      td = employee.points
+ui.segment
+  table.ui.basic.celled.table
+    thead
+      tr
+        th Employee Name
+        th Total Points
+    tbody
+    - @employee_list.each do |employee|
+      tr
+        td
+          h4.ui.image.header
+            = image_tag('svg/social.svg', class:'ui mini rounded image')
+            .content 
+              = "#{employee.first_name.capitalize} #{employee.last_name.capitalize}"
+              .sub.header
+                - department = Department.where(id: employee.department_id).first
+                = department.name
+        td = employee.points
