@@ -11,7 +11,6 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'devise'
 gem 'pg'
-gem 'bootsy'
 
 group :production do
   gem 'rails_12factor'
