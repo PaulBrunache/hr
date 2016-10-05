@@ -12,12 +12,12 @@
     | Manage HR Admins
     .menu
       .header Options
-      = link_to "Create HR", hr_dashboard_manageAdmins_path, class: 'item', data: { turbolinks: false }
-      = link_to "View HR Admins", hr_dashboard_viewAdmins_path, class: 'item',data: { turbolinks: false }
+      = link_to "Create HR", hr_dashboard_manageAdmins_path, class: 'item'
+      = link_to "View HR Admins", hr_dashboard_viewAdmins_path, class: 'item'
   .ui.dropdown.item
     i.chevron.right.yellow.icon
     | Manage Jobs
     .menu
       .header Manage Postings
-      = link_to "Create New Posting", new_job_posting_path, class: 'item',data: { turbolinks: false }
-      = link_to "Edit Existing Jobs", job_postings_path, class: 'item',data: { turbolinks: false }
+      = link_to "Create New Posting", new_job_posting_path, class: 'item'
+      = link_to "Edit Existing Jobs", job_postings_path, class: 'item'
