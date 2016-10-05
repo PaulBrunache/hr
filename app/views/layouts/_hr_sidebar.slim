@@ -1,6 +1,5 @@
 .ui.secondary.vertical.large.menu
     
-  
   a.item href= hr_dashboard_manageReferrals_path
     | Referrals
     .ui.teal.left.pointing.label = get_referral_count(current_human_resource.role)
@@ -13,12 +12,12 @@
     | Manage HR Admins
     .menu
       .header Options
-      = link_to "Create HR", hr_dashboard_manageAdmins_path, class: 'item'
-      = link_to "View HR Admins", hr_dashboard_viewAdmins_path, class: 'item'
+      = link_to "Create HR", hr_dashboard_manageAdmins_path, class: 'item', data: { turbolinks: false }
+      = link_to "View HR Admins", hr_dashboard_viewAdmins_path, class: 'item',data: { turbolinks: false }
   .ui.dropdown.item
     i.chevron.right.yellow.icon
     | Manage Jobs
     .menu
       .header Manage Postings
-      = link_to "Create New Posting", new_job_posting_path, class: 'item'
-      = link_to "Edit Existing Jobs", job_postings_path, class: 'item'
+      = link_to "Create New Posting", new_job_posting_path, class: 'item',data: { turbolinks: false }
+      = link_to "Edit Existing Jobs", job_postings_path, class: 'item',data: { turbolinks: false }
