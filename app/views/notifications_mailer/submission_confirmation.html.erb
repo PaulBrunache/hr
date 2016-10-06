@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style>
+      p {
+        font-size: 10.0pt;
+        font-family: "Century Gothic","sans-serif";
+      }
+      #team {
+        color: #e36c0a;
+      }
+      .team-text{
+        color: #1f497d;
+      }
+    </style>
+  </head>
+  <body>
+    <p> Thank you <%= @employee.first_name.capitalize %>! </p>
+
+    <p>We value your opinion and would like to thank you for referring <%= @referral.first_name.capitalize %>
+    <%= @referral.last_name.capitalize %> for the <b><%= @job %></b> position. Please note that your referral has
+    been invited to apply online at <a href='www.morselifecareers.org'>Morselife Careers</a>. After your referral
+    has applied it may take 48-72 hours before your referral is contacted.You will
+    continue to receive email communication pertaining to your referral as they are
+    moved through our screening process.</p>
+
+    <p>Thank you,</p>
+
+    <p>
+      <span id='team'>Employee Referral Team | MorseLife Health System</span>
+      <br>
+      <span class='team-text'>4847 Fred Gladstone Drive | West Palm Beach, FL  33417</span>
+      <br>
+      <span class='team-text'>phone (561) 471-5111 | fax (561) 688-0807 </span>
+    </p>
+</body>
+</html>

@@ -19,8 +19,9 @@ class ReferralsController < ApplicationController
   def create
     @referral = Referral.new(referral_params)
     @referral.employee_id = current_employee.id if current_employee
-    puts "\n\nI am in create\n\n"
     if @referral.save
+      job = JobPosting.where(id: @referral.job_posting_id).first
+      NotificationsMailer.submission_confirmation(@referral, job ).deliver
       flash[:success] = "Referral was successfully submitted"
       redirect_to employee_dashboard_my_referrals_path
     else
