@@ -7,6 +7,14 @@ class NotificationsMailer < ApplicationMailer
       subject: "Thank you! Your referral has been accepted.",
     )
   end
+  def submission_confirmation_for_referral(employee,referral, job)
+    @employee = employee
+    @referral = referral
+    @job = job.title
+    mail(to: @referral.email,
+      subject: "Congrats! You Were Submitted to Our Employee Referral Program.",
+    )
+  end
 
   def two_contact_attempts(employee,referral)
     @employee = employee

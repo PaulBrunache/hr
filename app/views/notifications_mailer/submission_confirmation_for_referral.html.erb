@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style>
+      p {
+        font-size: 10.0pt;
+        font-family: "Century Gothic","sans-serif";
+      }
+      #team {
+        color: #e36c0a;
+      }
+      .team-text{
+        color: #1f497d;
+      }
+    </style>
+  </head>
+  <body>
+    <p> Hi <%= @referral.first_name %>,</p>
+
+    <p>You were submitted to MorseLife Health System’s Employee Referral Program for our
+      <%= @job %> position by <%= @employee.first_name.capitalize %> <%= @employee.first_name.capitalize %>. 
+      Please take a few minutes to complete an application and join our Talent Network 
+      so that a member of our team can reach out to you. You can find more information
+      on our organization at <a href='www.morselifecareers.org'>www.morselifecareers.org</a>.</p>
+
+    <p>Thank you,</p>
+
+    <p>
+      <span id='team'>Employee Referral Team | MorseLife Health System</span>
+      <br>
+      <span class='team-text'>4847 Fred Gladstone Drive | West Palm Beach, FL  33417</span>
+      <br>
+      <span class='team-text'>phone (561) 471-5111 | fax (561) 688-0807 </span>
+    </p>
+</body>
+</html>
