@@ -1,5 +1,6 @@
 class HumanResources::DashboardController < ApplicationController
   before_action :authenticate_human_resource!
+  before_action :validate_role, only: [:manageAdmins, :create_hr]
 
   def manageReferrals
     @referral_list = Referral.all
@@ -49,5 +50,14 @@ class HumanResources::DashboardController < ApplicationController
   private
     def generate_password
       Devise.friendly_token.first(6)
+    end
+    def validate_role
+      if current_human_resource.role == 'Human Resources'
+        true
+      else
+        flash[:error] = "you are not authorized to access this section"
+        redirect_to hr_dashboard_manageReferrals_path
+        false
+      end
     end
 end
