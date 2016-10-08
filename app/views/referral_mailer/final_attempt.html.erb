@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style>
+      p {
+        font-size: 10.0pt;
+        font-family: "Century Gothic","sans-serif";
+      }
+      #team {
+        color: #e36c0a;
+      }
+      .team-text{
+        color: #1f497d;
+      }
+    </style>
+  </head>
+  <body>
+    <p> Dear <%= @referral.first_name.capitalize %>, </p>
+
+    <p>Our team members have attempted to contact you on numerous occasions to follow up on your submission to our employee referral program.  Unfortunately, we will not be able to consider you as a candidate since we were unable to contact you. If you have interest in working for MorseLife in the future, please join our <a href="http://www.jobs.net/jobs/morselife/join?joinpath=Extportablejoin">Talent Network</a> and feel free to visit our website at <a href="http://www.morselifecareers.org">www.morselifecareers.org</a> to view our updated open positions. </p>
+
+
+    <p>We wish you the best in your career endeavors,</p>
+
+    <p>
+      <span id='team'>Employee Referral Team | MorseLife Health System</span>
+      <br>
+      <span class='team-text'>4847 Fred Gladstone Drive | West Palm Beach, FL  33417</span>
+      <br>
+      <span class='team-text'>phone (561) 471-5111 | fax (561) 688-0807 </span>
+    </p>
+  </body>
+</html>

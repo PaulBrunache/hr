@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style>
+      p {
+        font-size: 10.0pt;
+        font-family: "Century Gothic","sans-serif";
+      }
+      #team {
+        color: #e36c0a;
+      }
+      .team-text{
+        color: #1f497d;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Hello <%= @referral.first_name.capitalize %>,</p>
+
+    <p>
+      Thank you for taking the time to speak with with us regarding the <%= @job %> position.  At this time, your resume and contact information has been passed along to our recruiter for the position.  You can expect to hear from them within the next 5 business days regarding the opportunity.
+    </p>
+
+    <p>We wish you the best of luck!</p>
+
+    <p>
+      <span id='team'>Employee Referral Team | MorseLife Health System</span>
+      <br>
+      <span class='team-text'>4847 Fred Gladstone Drive | West Palm Beach, FL  33417</span>
+      <br>
+      <span class='team-text'>phone (561) 471-5111 | fax (561) 688-0807 </span>
+    </p>
+  </body>
+</html>

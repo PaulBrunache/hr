@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style>
+      p {
+        font-size: 10.0pt;
+        font-family: "Century Gothic","sans-serif";
+      }
+      #team {
+        color: #e36c0a;
+      }
+      .team-text{
+        color: #1f497d;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Hello <%= @employee.first_name.capitalize %>,</p>
+
+    <p>Thank you for the recent referral of <%= @referral.first_name.capitalize %> <%= @referral.last_name.capitalize %>  for the <%= @job %> position. We regret to inform you that we have no open positions for <%= @job %> with MorseLife Health System at this time. However, we will keep your referral’s information on file and notify you as soon as they are considered for any future opportunities.MorseLife Health System appreciates the time you spent in consideration when referring <%= @employee.first_name.capitalize %>. We encourage you to visit our careers page and continue to refer individuals that will impact the organization.</p>
+
+    <p>
+      MorseLife Health System appreciates the time you spent in consideration when referring <%= @referral.first_name.capitalize %>. We encourage you to visit our <a href="http://www.morselifecareers.org/">careers page</a> page and continue to <a href="http://morselifereferrals.herokuapp.com/">refer individuals</a> that will impact the organization. 
+    </p>
+
+    <p>Thank you for all that you do,</p>
+
+    <p>
+      <span id='team'>Employee Referral Team | MorseLife Health System</span>
+      <br>
+      <span class='team-text'>4847 Fred Gladstone Drive | West Palm Beach, FL  33417</span>
+      <br>
+      <span class='team-text'>phone (561) 471-5111 | fax (561) 688-0807 </span>
+    </p>
+  </body>
+</html>
