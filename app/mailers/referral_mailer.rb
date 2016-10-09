@@ -25,7 +25,7 @@ class ReferralMailer < ApplicationMailer
     @employee = employee
     @referral = referral
     mail(to: @employee.email,
-      subject: "Referral Status Update - Thank you for Thinking of Us!",
+      subject: "Thank you for Thinking of Us!",
     )
   end
 

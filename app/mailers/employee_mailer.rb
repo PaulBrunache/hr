@@ -16,6 +16,7 @@ class EmployeeMailer < ApplicationMailer
       subject: "Referral Status Update - We Are in Need of Your Assistance.",
     )
   end
+
   def final_attempt(employee,referral)
     @employee = employee
     @referral = referral
@@ -50,6 +51,7 @@ class EmployeeMailer < ApplicationMailer
       subject: "Referral Status Update - Great News!",
     )
   end
+
   def hired(employee,referral,job)
     @employee = employee
     @referral = referral
@@ -57,6 +59,7 @@ class EmployeeMailer < ApplicationMailer
       subject: "Referral Status Update - Congratulations!",
     )
   end
+  
   def points(employee,points,prize)
     @employee = employee
     @referral = referral
