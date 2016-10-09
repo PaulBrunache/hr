@@ -1,4 +1,5 @@
-class NotificationsMailer < ApplicationMailer
+class EmployeeMailer < ApplicationMailer
+
   def submission_confirmation(employee,referral, job)
     @employee = employee
     @referral = referral
@@ -22,32 +23,45 @@ class NotificationsMailer < ApplicationMailer
       subject: "Referral Status Update - Thank you for Thinking of Us!",
     )
   end
-  def final_attempt_referral(employee,referral)
+
+  def not_qualified(employee,referral,job)
     @employee = employee
     @referral = referral
+    @job = job
     mail(to: @employee.email,
-      subject: "Referral Status Update - Thank you for Thinking of Us!",
+      subject: "Referral Status Update - Thank You!",
     )
   end
+
   def no_position_available(employee,referral,job)
     @employee = employee
     @referral = referral
+    @job = job
     mail(to: @employee.email,
-      subject: "Referral Status Update - Thank you for Thinking of Us!",
+      subject: "Referral Status Update - You are Ahead of the Game!",
     )
   end
 
   def interview(employee,referral)
     @employee = employee
     @referral = referral
+    @job = job
     mail(to: @employee.email,
-      subject: "Referral Status Update - Thank you for Thinking of Us!",
+      subject: "Referral Status Update - Great News!",
     )
   end
   def hired(employee,referral,job)
-
+    @employee = employee
+    @referral = referral
+    mail(to: @employee.email,
+      subject: "Referral Status Update - Congratulations!",
+    )
   end
   def points(employee,points,prize)
-
+    @employee = employee
+    @referral = referral
+    mail(to: @employee.email,
+      subject: "You've Earned It!",
+    )
   end
 end
