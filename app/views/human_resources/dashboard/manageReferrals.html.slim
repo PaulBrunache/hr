@@ -17,15 +17,15 @@
                         .field
                           .ui.slider.checkbox
                             / check_box_tag(name, value = "1", checked = false, options = {})
-                            = check_box_tag("contacted1", true, referral[:contacted1], disable: referral[:contacted2])
+                            = check_box_tag("contacted1", true, referral.phone_screening['contacted1'], disabled: referral.phone_screening['contacted1'])
                             label Contacted Once
                         .field
                           .ui.slider.checkbox
-                            = check_box_tag("contacted2", true, referral[:contacted2], disable: referral[:contacted2])
+                            = check_box_tag("contacted2", true, referral.phone_screening['contacted2'], disabled: referral.phone_screening['contacted2'])
                             label Contacted Twice
                         .field
                           .ui.slider.checkbox
-                            = check_box_tag("contacted3", true, referral[:contacted2], disable: referral[:contacted2])
+                            = check_box_tag("contacted3", true, referral.phone_screening['contacted3'], disabled: referral.phone_screening['contacted3'])
                             label Contacted Three Times
                       .grouped.fields
                         / radio_button_tag(name, value, checked = false, options = {}) public
@@ -58,6 +58,7 @@
                                 a &nbsp &nbsp #{get_job_name(referral.job_posting_id)}
                           
               .field
+                = hidden_field_tag  :referral_id, referral.id
                 button.ui.basic.submit.button name="send" type="submit"
                    i.icon.send
                    |Update

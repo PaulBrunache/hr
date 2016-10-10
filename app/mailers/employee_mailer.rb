@@ -28,7 +28,7 @@ class EmployeeMailer < ApplicationMailer
   def not_qualified(employee,referral,job)
     @employee = employee
     @referral = referral
-    @job = job
+    @job = job.title
     mail(to: @employee.email,
       subject: "Referral Status Update - Thank You!",
     )
@@ -37,16 +37,16 @@ class EmployeeMailer < ApplicationMailer
   def no_position_available(employee,referral,job)
     @employee = employee
     @referral = referral
-    @job = job
+    @job = job.title
     mail(to: @employee.email,
       subject: "Referral Status Update - You are Ahead of the Game!",
     )
   end
 
-  def interview(employee,referral)
+  def interview(employee,referral, job)
     @employee = employee
     @referral = referral
-    @job = job
+    @job = job.title
     mail(to: @employee.email,
       subject: "Referral Status Update - Great News!",
     )
@@ -55,11 +55,12 @@ class EmployeeMailer < ApplicationMailer
   def hired(employee,referral,job)
     @employee = employee
     @referral = referral
+    @job = job.title
     mail(to: @employee.email,
       subject: "Referral Status Update - Congratulations!",
     )
   end
-  
+
   def points(employee,points,prize)
     @employee = employee
     @referral = referral

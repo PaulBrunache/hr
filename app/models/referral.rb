@@ -5,6 +5,3 @@ class Referral < ApplicationRecord
   serialize :hr_screening ,JSON
   serialize :interviewing ,JSON
 end
-
-
-# rails g migration CreateJoinTablejobPostingReferral jobPosting referral

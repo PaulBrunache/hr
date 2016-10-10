@@ -21,8 +21,8 @@ class ReferralsController < ApplicationController
     @referral.employee_id = current_employee.id if current_employee
     if @referral.save
       job = JobPosting.where(id: @referral.job_posting_id).first
-      NotificationsMailer.submission_confirmation(current_employee,@referral, job ).deliver
-      NotificationsMailer.submission_confirmation_for_referral(current_employee,@referral, job ).deliver
+      EmployeeMailer.submission_confirmation(current_employee,@referral, job ).deliver
+      ReferralMailer.submission_confirmation(current_employee,@referral, job ).deliver
 
       flash[:success] = "Referral was successfully submitted"
       redirect_to employee_dashboard_my_referrals_path
