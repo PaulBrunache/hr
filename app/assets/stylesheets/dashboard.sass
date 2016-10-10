@@ -11,6 +11,7 @@ body
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important
   .ui-container
     padding: 5% 5% 0 5%
+
   #menu
     z-index: 1
     height: 70px
@@ -25,7 +26,7 @@ body
     #welcome
       border-top-left-radius: 7px
       box-shadow: 0 -1px 5px rgba(0,0,0,.3)
-      width: 260px
+      width: 25%
       background: #1eade5
       padding: 0
       background-image: image-url('background.png')
@@ -37,19 +38,12 @@ body
       .menu.item
         height: 100%
     #dashboard-sidebar
-      background-color: white
-      width: 260px
+      background-color: #fafcfe
+      width: 25%
       height: 100vh
       box-shadow: 0 4px 5px rgba(0,0,0,.3)
-      .ui.secondary.vertical.menu
-        margin: auto
-        margin-top: 0
-        border-radius: 0
-        height: 100%
-        padding: 30% 5% 5% 5%
-        .item
-          color: #337ab7
-
+      .ui.fluid.large.vertical.menu
+        padding-top: 50px
   .bg-gradient-main
     border-radius: 0
     border-top-left-radius: 7px
@@ -66,4 +60,21 @@ body
     background: linear-gradient(154deg, #008fe2 0, #00b29c 100%)
   #content
     padding-top: 65px
-    padding-left: 260px
+    padding-left: 25%
+
+.ui.divider > .icon
+  font-size: 2rem
+.new-menu
+  select
+    color: #333
+    padding: 2px 5px
+  .menu
+    margin: 0
+    -webkit-border-radius: 0
+    border-radius: 0
+.ui.inverted.teal.menu
+  background-color: #1eade5
+.ui.menu.new-menu > .item
+  background-color: #568eda
+  &:hover
+    background-color: #568eda

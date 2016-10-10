@@ -18,7 +18,7 @@
         i.lock.icon		    
         | Logout	
       
-#dashboard-sidebar
+#dashboard-sidebar.new-menu
   - if is_hr_logged_in?(params[:controller])
     == render 'layouts/hr_sidebar'
   - else

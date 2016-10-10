@@ -3,7 +3,8 @@ class HumanResources::DashboardController < ApplicationController
   before_action :validate_role, only: [:manageAdmins, :create_hr]
 
   def manageReferrals
-    @referral_list = Referral.all
+    @referral_list = Referral.where(pending: true)
+    @referral_for_hr = Referral.where(sent_to_hr: true)
     @referral_count = @referral_list.size
   end
 

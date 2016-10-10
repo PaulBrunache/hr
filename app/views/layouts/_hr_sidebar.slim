@@ -1,23 +1,44 @@
-.ui.secondary.vertical.large.menu
-    
-  a.item href= hr_dashboard_manageReferrals_path
-    | Referrals
-    .ui.teal.left.pointing.label = get_referral_count(current_human_resource.role)
-  
-  a.large.item href=hr_dashboard_leaderboard_path
-    i.signal.red.icon
-    | Leaderboard
-  .ui.dropdown.item
-    i.chevron.right.yellow.icon
-    | Manage HR Admins
-    .menu
-      .header Options
-      = link_to "Create HR", hr_dashboard_manageAdmins_path, class: 'item'
-      = link_to "View HR Admins", hr_dashboard_viewAdmins_path, class: 'item'
-  .ui.dropdown.item
-    i.chevron.right.yellow.icon
-    | Manage Jobs
-    .menu
-      .header Manage Postings
-      = link_to "Create New Posting", new_job_posting_path, class: 'item'
-      = link_to "Edit Existing Jobs", job_postings_path, class: 'item'
+.ui.teal.menu.huge.fluid.vertical.inverted 
+  - if current_human_resource.role == 'Human Resources'
+    a.item.active href=hr_dashboard_manageReferrals_path
+      | Referrals
+      i.check.icon
+    .item
+      i.setting.icon
+      | Manage Admins
+      .menu
+        = link_to "Create New", hr_dashboard_manageAdmins_path, class: 'item'
+        = link_to "View Admins", hr_dashboard_viewAdmins_path, class: 'item'
+    .item
+      i.setting.icon
+      | Manage
+      .menu
+        = link_to "Create New Posting", new_job_posting_path, class: 'item'
+        = link_to "Edit Existing Jobs", job_postings_path, class: 'item'
+    .item
+      i.users.icon
+      | Processed Referrals
+      .menu
+        = link_to "No Position", hr_dashboard_manageAdmins_path, class: 'item'
+        = link_to "Unqualified", hr_dashboard_viewAdmins_path, class: 'item'
+    a.item href=hr_dashboard_leaderboard_path
+      i.signal.icon
+      | Leaderboard
+  - else 
+    /! PART 1: USER INFO
+    a.item.active href=hr_dashboard_manageReferrals_path
+      | Referrals
+      i.check.icon
+    .item
+      i.setting.icon
+      | Manage Admins
+      .menu
+        = link_to "View Admins", hr_dashboard_viewAdmins_path, class: 'item'
+    .item
+      i.setting.icon
+      | Manage
+      .menu
+        = link_to "View Existing Jobs", job_postings_path, class: 'item'
+    a.item href=hr_dashboard_leaderboard_path
+      i.signal.icon
+      | Leaderboard
