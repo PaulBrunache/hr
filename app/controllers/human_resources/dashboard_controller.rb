@@ -4,7 +4,8 @@ class HumanResources::DashboardController < ApplicationController
 
   def manageReferrals
     @referral_list = Referral.where(pending: true)
-    @referral_for_hr = Referral.where(sent_to_hr: true)
+    @referral_for_hr = Referral.where(hr_eval: true)
+    @referral_count_for_hr = @referral_list.size
     @referral_count = @referral_list.size
   end
 
