@@ -7,8 +7,6 @@ class HumanResources::DashboardController < ApplicationController
     @hr_referral_list = Referral.where(hr_eval: true)
     @unqualified = Referral.where(unqualified: true)
 
-    @concierge_referral_count = @concierge_referral_list.size
-    @hr_referral_count = @hr_referral_list.size
   end
 
   def manageAdmins
