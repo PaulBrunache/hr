@@ -16,10 +16,10 @@ class CreateReferrals < ActiveRecord::Migration[5.0]
       #phase Three
       t.boolean :interview , default: false
       #hired
-      t.boolean :hired_hourly, default: false,
-      t.boolean :hired_salaried, default: false,
-      t.boolean :hired_hard_to_fill, default: false,
-      t.boolean :not_selected_eligible, default: false,
+      t.boolean :hired_hourly, default: false
+      t.boolean :hired_salaried, default: false
+      t.boolean :hired_hard_to_fill, default: false
+      t.boolean :not_selected_eligible, default: false
       t.boolean :not_selected_ineligible, default: false
 
       t.text :phone_screening, default: {
@@ -31,9 +31,9 @@ class CreateReferrals < ActiveRecord::Migration[5.0]
       }.to_json
 
       t.text :hr_screening, default: {
-        no_position: false
+        no_position: false,
         not_qualified: false,
-        move_to_interview: false,
+        move_to_interview: false
       }.to_json
 
       t.references :employee, foreign_key: true
