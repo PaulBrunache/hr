@@ -1,6 +1,6 @@
-- if list_has_data? @referral_for_hr
+- if list_has_data? @hr_referral_list
   .ui.styled.fluid.accordion
-    - @referral_list.each do |referral|
+    - @hr_referral_list.each do |referral|
       .title
         i.dropdown.icon
         = "#{referral.first_name.capitalize} #{referral.last_name.capitalize}"

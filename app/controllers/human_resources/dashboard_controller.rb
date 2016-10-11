@@ -3,10 +3,12 @@ class HumanResources::DashboardController < ApplicationController
   before_action :validate_role, only: [:manageAdmins, :create_hr]
 
   def manageReferrals
-    @referral_list = Referral.where(pending: true)
-    @referral_for_hr = Referral.where(hr_eval: true)
-    @referral_count_for_hr = @referral_list.size
-    @referral_count = @referral_list.size
+    @concierge_referral_list = Referral.where(pending: true)
+    @hr_referral_list = Referral.where(hr_eval: true)
+    @unqualified = Referral.where(unqualified: true)
+
+    @concierge_referral_count = @concierge_referral_list.size
+    @hr_referral_count = @hr_referral_list.size
   end
 
   def manageAdmins
@@ -36,7 +38,21 @@ class HumanResources::DashboardController < ApplicationController
     @employee_list = Employee.order(points: :asc)
   end
 
-  def profile
+# Referral status List
+  def list_for_hired
+    @list = Referral.where(hired_hourly: true).or(Referral.where(hired_hourly: true)).or(Referral.where(hired_hard_to_fill: true))
+  end
+
+  def list_for_no_position
+    @list = Referral.where(no_position: true)
+  end
+
+  def list_for_not_selected
+    @list = Referral.where(not_selected_ineligible: true).or(Referral.where(not_selected_eligible: true))
+  end
+
+  def list_for_unqualified
+    @list = Referral.where(unqualified: true)
   end
 
   #Phases

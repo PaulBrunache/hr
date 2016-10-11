@@ -28,6 +28,10 @@ Rails.application.routes.draw do
   get 'hr/dashboard/manageAdmins',to: 'human_resources/dashboard#manageAdmins'
   get 'hr/dashboard/viewAdmins',to: 'human_resources/dashboard#viewAdmins'
   get 'hr/dashboard/leaderboard',to: 'human_resources/dashboard#leaderboard'
+  get 'hr/dashboard/hired',to: 'human_resources/dashboard#list_for_hired'
+  get 'hr/dashboard/no-position',to: 'human_resources/dashboard#list_for_no_position'
+  get 'hr/dashboard/not-selected',to: 'human_resources/dashboard#list_for_not_selected'
+  get 'hr/dashboard/unqualified',to: 'human_resources/dashboard#list_for_unqualified'
   get 'hr/dashboard/profile',to: 'human_resources/dashboard#profile'
   #Forms
   post 'validate_admin', to: 'human_resources/dashboard#create_hr'
