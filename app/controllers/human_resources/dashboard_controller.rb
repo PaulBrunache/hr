@@ -55,8 +55,9 @@ class HumanResources::DashboardController < ApplicationController
 
   #Phases
   def phase_one
-    job = JobPosting.where(id: @referral.job_posting_id).first
+    
     referral = Referral.where(id: params[:referral_id]).first
+    job = JobPosting.where(id: referral.job_posting_id).first
     employee = Employee.where(id: referral.employee_id).first
 
     if params[:contacted1].present?
