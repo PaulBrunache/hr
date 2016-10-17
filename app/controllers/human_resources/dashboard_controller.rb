@@ -40,18 +40,38 @@ class HumanResources::DashboardController < ApplicationController
 # Referral status List
   def list_for_hired
     @list = Referral.where({hired_hourly: true,hired_hard_to_fill: true})
+    respond_to do |format|
+      format.html
+      format.csv { send_data @list.to_csv, filename: "hired-#{Date.today}.csv" }
+      format.xlsx { send_data @list.to_csv(col_sep: "\t"), filename: "hired-#{Date.today}.xlsx"}
+    end
   end
 
   def list_for_no_position
     @list = Referral.where(no_position: true)
+    respond_to do |format|
+      format.html
+      format.csv { send_data @list.to_csv, filename: "no-position-#{Date.today}.csv" }
+      format.xlsx { send_data @list.to_csv(col_sep: "\t"), filename: "no-position-#{Date.today}.xlsx"  }
+    end
   end
 
   def list_for_not_selected
     @list = Referral.where({not_selected_ineligible: true, not_selected_eligible: true})
+    respond_to do |format|
+      format.html
+      format.csv { send_data @list.to_csv, filename: "not-selected-#{Date.today}.csv"}
+      format.xlsx { send_data @list.to_csv(col_sep: "\t"), filename: "not-selected-#{Date.today}.xlsx" }
+    end
   end
 
   def list_for_unqualified
     @list = Referral.where(unqualified: true)
+    respond_to do |format|
+      format.html
+      format.csv { send_data @list.to_csv, filename: "unqualified-#{Date.today}.csv"}
+      format.xlsx { send_data @list.to_csv(col_sep: "\t"), filename: "unqualified-#{Date.today}.xlsx" }
+    end
   end
 
   #Phases
