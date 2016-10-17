@@ -127,6 +127,7 @@ class HumanResources::DashboardController < ApplicationController
         referral.save
         EmployeeMailer.not_qualified(employee,referral,job).deliver
       else
+        add_points(employee,employee.points, 25 )
         referral.interview = true
         referral.save
         EmployeeMailer.interview(employee,referral,job).deliver      ReferralMailer.interview(employee,referral,job).deliver
@@ -152,10 +153,17 @@ class HumanResources::DashboardController < ApplicationController
         referral.not_selected_eligible = true
         referral.save
       when "hired_hourly"
+        add_points(employee,employee.points, 125)
         referral.hired_hourly = true
         referral.save
         EmployeeMailer.hired(employee,referral,job).deliver
       when "hired_salaried"
+        add_points(employee,employee.points, 225 )
+        referral.hired_salaried = true
+        referral.save
+        EmployeeMailer.hired(employee,referral,job).deliver
+      when "hired_hard_to_fill"
+        add_points(employee,employee.points, 50 )
         referral.hired_salaried = true
         referral.save
         EmployeeMailer.hired(employee,referral,job).deliver
@@ -194,5 +202,9 @@ class HumanResources::DashboardController < ApplicationController
         referral.interviewing[field] = value
       end
       referral.save
+    end
+    def add_points(employee, current_points, amount)
+      employee.points = current_points + amount
+      employee.save
     end
 end
