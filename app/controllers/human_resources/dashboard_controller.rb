@@ -11,7 +11,8 @@ class HumanResources::DashboardController < ApplicationController
     @admin = HumanResource.new
   end
   def interview
-    @list = Referral.where({interview: true})
+    @list = Referral.where({interview: true, hired_hourly: false,hired_hard_to_fill: false,
+      not_selected_ineligible: false, not_selected_eligible: false, no_position: false})
   end
   def viewAdmins
     @hr_admin_list = HumanResource.all
@@ -95,6 +96,7 @@ class HumanResources::DashboardController < ApplicationController
       employee = Employee.where(id: referral.employee_id).first
 
       case params[:phase_two]
+
       when "no_position"
         referral.no_position = true
         referral.save
@@ -121,18 +123,28 @@ class HumanResources::DashboardController < ApplicationController
       referral = Referral.where(id: params[:referral_id]).first
       job = JobPosting.where(id: referral.job_posting_id).first
       employee = Employee.where(id: referral.employee_id).first
+
       case params[:phase_two]
-      when "no_position"
-        referral.no_position = true
+      when "not_selected_ineligible"
+        referral.not_selected_ineligible = true
         referral.save
-      when "unqualified"
-        referral.unqualified = true
+      when "not_selected_eligible"
+        referral.not_selected_eligible = true
         referral.save
+      when "hired_hourly"
+        referral.hired_hourly = true
+        referral.save
+        EmployeeMailer.hired(employee,referral,job).deliver
+      when "hired_salaried"
+        referral.hired_salaried = true
+        referral.save
+        EmployeeMailer.hired(employee,referral,job).deliver
       else
-        referral.interview = true
+        referral.no_position = true
         referral.save
       end
       flash[:success] = "Referral was successfully updated"
+      redirect_to hr_dashboard_interview_path
     else
       flash[:error] = "You must select an option"
       redirect_to hr_dashboard_interview_path

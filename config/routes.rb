@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   post 'validate_admin', to: 'human_resources/dashboard#create_hr'
   post 'phase_one', to: 'human_resources/dashboard#phase_one'
   post 'phase_two', to: 'human_resources/dashboard#phase_two'
-  post 'phase_three', to: 'human_resources/dashboard#phase_Three'
+  post 'phase_three', to: 'human_resources/dashboard#phase_three'
 
 
 end
