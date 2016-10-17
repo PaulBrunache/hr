@@ -3,19 +3,19 @@ class HumanResources::DashboardController < ApplicationController
   before_action :validate_role, only: [:manageAdmins, :create_hr]
 
   def manageReferrals
-    @concierge_referral_list = Referral.where(pending: true)
-    @hr_referral_list = Referral.where(hr_eval: true)
-    @unqualified = Referral.where(unqualified: true)
-
+    @concierge_referral_list = Referral.where({unqualified: false, hr_eval: false})
+    @hr_referral_list = Referral.where({hr_eval: true, interview: false})
   end
 
   def manageAdmins
     @admin = HumanResource.new
   end
+  def interview
+    @list = Referral.where({interview: true})
+  end
   def viewAdmins
     @hr_admin_list = HumanResource.all
   end
-
 
   def create_hr
     password = generate_password
@@ -38,7 +38,7 @@ class HumanResources::DashboardController < ApplicationController
 
 # Referral status List
   def list_for_hired
-    @list = Referral.where(hired_hourly: true).or(Referral.where(hired_hourly: true)).or(Referral.where(hired_hard_to_fill: true))
+    @list = Referral.where({hired_hourly: true,hired_hard_to_fill: true})
   end
 
   def list_for_no_position
@@ -46,7 +46,7 @@ class HumanResources::DashboardController < ApplicationController
   end
 
   def list_for_not_selected
-    @list = Referral.where(not_selected_ineligible: true).or(Referral.where(not_selected_eligible: true))
+    @list = Referral.where({not_selected_ineligible: true, not_selected_eligible: true})
   end
 
   def list_for_unqualified
@@ -55,7 +55,6 @@ class HumanResources::DashboardController < ApplicationController
 
   #Phases
   def phase_one
-    
     referral = Referral.where(id: params[:referral_id]).first
     job = JobPosting.where(id: referral.job_posting_id).first
     employee = Employee.where(id: referral.employee_id).first
@@ -77,6 +76,7 @@ class HumanResources::DashboardController < ApplicationController
     if params[:unqualified].present?
       update_referral('phone_screening',referral, 'unqualified', params[:unqualified])
       referral.unqualified = true
+      referral.save
       EmployeeMailer.not_qualified(employee,referral,job).deliver
     end
     if params[:sent_to_hr].present?
@@ -89,13 +89,54 @@ class HumanResources::DashboardController < ApplicationController
   end
 
   def phase_two
-    puts "\n\nThese are the Params: \n #{params.to_json}\n\n"
+    if params[:phase_two].present?
+      referral = Referral.where(id: params[:referral_id]).first
+      job = JobPosting.where(id: referral.job_posting_id).first
+      employee = Employee.where(id: referral.employee_id).first
 
+      case params[:phase_two]
+      when "no_position"
+        referral.no_position = true
+        referral.save
+        EmployeeMailer.no_position_available(employee,referral,job).deliver
+        ReferralMailer.no_position_available(employee,referral,job).deliver
+      when "unqualified"
+        referral.unqualified = true
+        referral.save
+        EmployeeMailer.not_qualified(employee,referral,job).deliver
+      else
+        referral.interview = true
+        referral.save
+        EmployeeMailer.interview(employee,referral,job).deliver      ReferralMailer.interview(employee,referral,job).deliver
+      end
+      flash[:success] = "Referral was successfully updated"
+    else
+      flash[:error] = "You must select an option"
+      redirect_to hr_dashboard_manageReferrals_path
+    end
   end
 
   def phase_three
-    puts "\n\nThese are the Params: \n #{params.to_json}\n\n"
-
+    if params[:phase_three].present?
+      referral = Referral.where(id: params[:referral_id]).first
+      job = JobPosting.where(id: referral.job_posting_id).first
+      employee = Employee.where(id: referral.employee_id).first
+      case params[:phase_two]
+      when "no_position"
+        referral.no_position = true
+        referral.save
+      when "unqualified"
+        referral.unqualified = true
+        referral.save
+      else
+        referral.interview = true
+        referral.save
+      end
+      flash[:success] = "Referral was successfully updated"
+    else
+      flash[:error] = "You must select an option"
+      redirect_to hr_dashboard_interview_path
+    end
   end
 
   private

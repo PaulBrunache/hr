@@ -1,12 +1,12 @@
-- if list_has_data? @hr_referral_list
+- if list_has_data? @list
   .ui.styled.fluid.accordion
-    - @hr_referral_list.each do |referral|
+    - @list.each do |referral|
       .title
         i.dropdown.icon
         = "#{referral.first_name.capitalize} #{referral.last_name.capitalize}"
       .content
         .transition.hidden 
-          = form_tag phase_two_path do
+          = form_tag phase_three_path do
             .ui.fluid.form
               .two.fields
                 .field          
@@ -32,19 +32,26 @@
                     .grouped.fields
                       / radio_button_tag(name, value, checked = false, options = {}) public
                       h5.ui.header Decision
-                    
                       .field
                         .ui.toggle.checkbox
-                          = radio_button_tag("phase_two", "no_position",false)
+                          = radio_button_tag("phase_three", "not_selected_ineligible",false)
+                          label Not selected ineligible
+                      .field
+                        .ui.toggle.checkbox
+                          = radio_button_tag("phase_three", "not_selected_eligible",false)
+                          label Not selected eligible
+                      .field
+                        .ui.toggle.checkbox
+                          = radio_button_tag("phase_three", "no_position",false)
                           label No Position
                       .field
                         .ui.toggle.checkbox
-                          = radio_button_tag("phase_two", "unqualified",false)
-                          label Unqualified
+                          = radio_button_tag("phase_three", "hired_hourly",false)
+                          label Hired Hourly
                       .field
                         .ui.toggle.checkbox
-                          = radio_button_tag("phase_two", "send_to_interview",false)
-                          label Send To Interview
+                          = radio_button_tag("phase_three", "hired_salaried",false)
+                          label Hired Salary
                 
             br
             br

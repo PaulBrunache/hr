@@ -1,8 +1,16 @@
+#menu-footer.ui.labeled.vertical.icon.fluid.menu
+  a.item.new_lifted style="background-color: white; color:rgba(60,60,60,.9); font-size: 1.1rem"
+    i.massive.dashboard.icon
+    | Welcome to your Dashboard   
 .ui.teal.menu.huge.fluid.vertical.inverted 
   - if current_human_resource.role == 'Human Resources'
-    a.item.active href=hr_dashboard_manageReferrals_path
-      | Referrals
+    .item
+      | Referral Screening
       i.check.icon
+      .menu
+        = link_to "Screen Referrals", hr_dashboard_manageReferrals_path, class: 'item'
+        = link_to "Interview", hr_dashboard_interview_path, class: 'item'
+        
     .item
       i.settings.icon
       | Manage Admins
@@ -45,7 +53,4 @@
       i.signal.icon
       | Leaderboard
 
-#menu-footer.ui.labeled.vertical.icon.fluid.menu
-  a.item.new_lifted style="background-color: white; color:rgba(60,60,60,.9); font-size: 1.1rem"
-    i.massive.dashboard.icon
-    | Welcome to your Dashboard     
+  

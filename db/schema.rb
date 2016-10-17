@@ -77,19 +77,23 @@ ActiveRecord::Schema.define(version: 20160915054934) do
     t.string   "last_name"
     t.string   "email"
     t.string   "phone_number"
-    t.boolean  "pending",         default: true
-    t.boolean  "phone_eval",      default: false
-    t.boolean  "hr_eval",         default: false
-    t.boolean  "interview",       default: false
-    t.boolean  "hired",           default: false
-    t.boolean  "unqualified",     default: false
-    t.text     "phone_screening", default: "{\"contacted1\":false,\"contacted2\":false,\"contacted3\":false,\"unqualified\":false,\"sent_to_hr\":false}"
-    t.text     "hr_screening",    default: "{\"not_qualified\":false,\"qualified\":false,\"moved_to_interview\":false}"
-    t.text     "interviewing",    default: "{\"hired_hourly\":false,\"hired_salaried\":false,\"hired_hard_to_fill\":false,\"not_selected_eligible\":false,\"not_selected_ineligible\":false}"
+    t.boolean  "pending",                 default: true
+    t.boolean  "phone_eval",              default: false
+    t.boolean  "unqualified",             default: false
+    t.boolean  "hr_eval",                 default: false
+    t.boolean  "no_position",             default: false
+    t.boolean  "interview",               default: false
+    t.boolean  "hired_hourly",            default: false
+    t.boolean  "hired_salaried",          default: false
+    t.boolean  "hired_hard_to_fill",      default: false
+    t.boolean  "not_selected_eligible",   default: false
+    t.boolean  "not_selected_ineligible", default: false
+    t.text     "phone_screening",         default: "{\"contacted1\":false,\"contacted2\":false,\"contacted3\":false,\"unqualified\":false,\"sent_to_hr\":false}"
+    t.text     "hr_screening",            default: "{\"no_position\":false,\"not_qualified\":false,\"move_to_interview\":false}"
     t.integer  "employee_id"
     t.integer  "job_posting_id"
-    t.datetime "created_at",                                                                                                                                                                   null: false
-    t.datetime "updated_at",                                                                                                                                                                   null: false
+    t.datetime "created_at",                                                                                                                                      null: false
+    t.datetime "updated_at",                                                                                                                                      null: false
     t.index ["employee_id"], name: "index_referrals_on_employee_id", using: :btree
     t.index ["job_posting_id"], name: "index_referrals_on_job_posting_id", using: :btree
   end

@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   #HR custom routes
   get 'hr/dashboard/manageReferrals',to: 'human_resources/dashboard#manageReferrals'
   get 'hr/dashboard/manageAdmins',to: 'human_resources/dashboard#manageAdmins'
+  get 'hr/dashboard/interview',to: 'human_resources/dashboard#interview'
   get 'hr/dashboard/viewAdmins',to: 'human_resources/dashboard#viewAdmins'
   get 'hr/dashboard/leaderboard',to: 'human_resources/dashboard#leaderboard'
   get 'hr/dashboard/hired',to: 'human_resources/dashboard#list_for_hired'

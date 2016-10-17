@@ -30,12 +30,6 @@ class CreateReferrals < ActiveRecord::Migration[5.0]
         sent_to_hr: false
       }.to_json
 
-      t.text :hr_screening, default: {
-        no_position: false,
-        not_qualified: false,
-        move_to_interview: false
-      }.to_json
-
       t.references :employee, foreign_key: true
       t.references :job_posting, foreign_key: true
       t.timestamps

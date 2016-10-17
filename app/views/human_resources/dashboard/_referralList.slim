@@ -1,0 +1,33 @@
+- if list_has_data? @list
+  table.ui.compact.celled.definition.table
+    thead.full-width
+      tr
+        th
+        th Name
+        th E-mail address
+        th Processed Date
+    tbody
+      - @list.each do |referral|
+        tr
+          td.collapsing
+            .ui.fitted.slider.checkbox
+              input type="checkbox" /
+              label
+          td = "#{referral.first_name.capitalize} #{referral.last_name.capitalize}"
+          td = referral.email
+          td = referral.updated_at
+    tfoot.full-width
+      tr
+        th
+        th colspan="4" 
+          .ui.right.floated.small.primary.labeled.icon.button
+            i.table.icon
+            |  Export To Excel
+          .ui.small.button
+            | Delete
+          .ui.small.disabled.button
+            | Delete All
+- else 
+  .ui.segment
+    == render 'layouts/nodata'          
+                              
