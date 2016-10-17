@@ -1,13 +1,11 @@
-.authorized-container.ui.middle.aligned.centered.grid
-  .twelve.wide.column.custom-border
-    .background-image-home.shadow
-  .twelve.wide.column.authorize-form
-    .ui.center.aligned.basic.segment
-      a.ui.teal.labeled.large.icon.button href= employee_dashboard_index_path
-        | Employee Login
-        i.user.icon
-      .ui.horizontal.divider
-        | Or
-      a.ui.blue.labeled.large.icon.button href= hr_dashboard_manageReferrals_path
-        | Human Resources
-        i.user.icon
+#landing-page.ui.middle.aligned.centered.grid
+    .ui.center.aligned.basic.segment.eight.wide.column
+      #shadow
+        .a.ui.teal.labeled.large.icon.button.visible-front href= employee_dashboard_index_path
+          | Employee Login
+          i.user.icon
+        .ui.horizontal.divider.visible-front style="color:white; font-size:1.2rem;"
+          | Or
+        a.ui.blue.labeled.large.icon.button.visible-front href= hr_dashboard_manageReferrals_path
+          | Human Resources
+          i.user.icon
