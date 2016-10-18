@@ -1,2 +1,0 @@
-module HumanResources::DashboardHelper
-end
