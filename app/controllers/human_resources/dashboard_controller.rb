@@ -178,6 +178,7 @@ class HumanResources::DashboardController < ApplicationController
       redirect_to hr_dashboard_interview_path
     end
   end
+  
 
   private
     def generate_password
@@ -207,4 +208,5 @@ class HumanResources::DashboardController < ApplicationController
       employee.points = current_points + amount
       employee.save
     end
+
 end

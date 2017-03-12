@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
 
-gem 'rails', '5.0.0.1'
+gem 'rails'
 gem 'sass-rails'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 gem 'slim-rails'
@@ -10,6 +10,7 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'devise'
+gem 'platform-api'
 gem 'pg'
 
 group :production do

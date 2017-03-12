@@ -1,4 +1,7 @@
 module ApplicationHelper
+  def get_total_rows
+    @rowSize = Referral.all.size+ JobPosting.all.size + Employee.all.size + Department.all.size + HumanResource.all.size
+  end
   def reroute(controller)
     routes = ['human_resources/dashboard','employees/dashboard', 'referrals','job_postings']
 
@@ -29,12 +32,12 @@ module ApplicationHelper
     # else
       referral = Referral.all
       size = referral.size
+      size
     # end
   end
-
   def list_has_data?(list)
 
-    if list.nil? || list.size == 0 
+    if list.nil? || list.size == 0
       false
     else
       true

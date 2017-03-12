@@ -1,9 +1,12 @@
 .ui.icon.menu.bg-gradient-main
   #welcome
     = link_to "", root_path, class: "menu item"
+
   .right.labeled.menu.red
     - if is_hr_logged_in?(params[:controller])
-      / - puts "the world is #{params[:controller]}\n\n"     
+      / - puts "the world is #{params[:controller]}\n\n"
+      a.item
+        | Available Space: #{(10000 - get_total_rows)}
       = link_to edit_human_resource_registration_path, class: "item"
         i.user.icon
         | Profile  
