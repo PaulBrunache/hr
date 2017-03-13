@@ -43,9 +43,6 @@
               = f.text_field :last_name, autocomplete: "off", placeholder: 'Last Name'
               i.user.icon
         br
-        .field
-          h4.ui.dividing.header Enter New Password
-        br
         .two.fields
           .field
             .ui.left.icon.input
@@ -56,12 +53,13 @@
               = f.password_field :password, autocomplete: "off", placeholder: "confirm new password" 
               i.lock.icon
         br
-        .field 
-          button.ui.teal.button name="send" type="submit" 
-            i.icon.send
-            | Update Account
-      br
-      = button_to("Cancel my account", registration_path(resource_name), class: 'ui basic red button', method: :delete, data: {confirm: "Are you sure?"})
+        .two.fields
+          .field 
+            button.ui.teal.button name="send" type="submit" 
+              i.icon.send
+              | Update Account
+          .field
+            = button_to("Cancel my account", registration_path(resource_name), class: 'ui basic red button', method: :delete, data: {confirm: "Are you sure?"})
 
         
         
