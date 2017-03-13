@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   # devise_for :users, path: 'auth', path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'cmon_let_me_in' }
   resources :referrals
   resources :job_postings
@@ -12,12 +11,10 @@ Rails.application.routes.draw do
   confirmation: 'verification',sign_up: 'register',edit: 'edit/profile'
   }
 
-
   devise_for :employees, path: 'employee', controllers: { registrations: "registrations" },
   path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret',
   confirmation: 'verification',sign_up: 'register',edit: 'edit/profile'
   }
-
 
   #Employees custom routes
   get 'employee/dashboard/index',to: 'employees/dashboard#index'
@@ -39,6 +36,4 @@ Rails.application.routes.draw do
   post 'phase_one', to: 'human_resources/dashboard#phase_one'
   post 'phase_two', to: 'human_resources/dashboard#phase_two'
   post 'phase_three', to: 'human_resources/dashboard#phase_three'
-
-
 end

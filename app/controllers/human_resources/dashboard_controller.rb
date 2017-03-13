@@ -178,7 +178,7 @@ class HumanResources::DashboardController < ApplicationController
       redirect_to hr_dashboard_interview_path
     end
   end
-  
+
 
   private
     def generate_password
