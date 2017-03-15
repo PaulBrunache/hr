@@ -1,58 +1,60 @@
 - if list_has_data? @list
-  table.ui.compact.celled.definition.table
-    thead.full-width
-      tr
-        th
-        th Name
-        th E-mail address
-        th Phone Number
-        th Processed Date
-    tbody
-      - @list.each do |referral|
+  = form_tag destroyReferrals_path do
+    table.ui.compact.celled.definition.table
+      thead.full-width
         tr
-          td.collapsing
-            .ui.fitted.slider.checkbox
-              input type="checkbox" /
-              label
-          td = "#{referral.first_name.capitalize} #{referral.last_name.capitalize}"
-          td = referral.email
-          td = referral.phone_number
-          td = referral.updated_at
-    tfoot.full-width
-      tr
-        th
-        th colspan="4" 
-          .ui.right.floated.small.primary.labeled.icon.button
-            i.table.icon
-            - if current_page? hr_dashboard_hired_path
-              = link_to "Export To Excel", hr_dashboard_hired_path(format: "xlsx")
+          th
+          th Name
+          th E-mail address
+          th Phone Number
+          th Processed Date
+      tbody
+        - @list.each do |referral|
+          tr
+            td.collapsing
+              .ui.fitted.slider.checkbox
+                = check_box("deleteThis", referral.email, {}, "true", "false" )
+                label
+            td = "#{referral.first_name.capitalize} #{referral.last_name.capitalize}"
+            td = referral.email
+            td = referral.phone_number
+            td = referral.updated_at
+      tfoot.full-width
+        tr
+          th
+          th colspan="4" 
+            .ui.right.floated.small.primary.labeled.icon.button
+              i.table.icon
+              - if current_page? hr_dashboard_hired_path
+                = link_to "Export To Excel", hr_dashboard_hired_path(format: "xlsx")
+                
+              - elsif current_page? hr_dashboard_noposition_path
+                = link_to "Export To Excel", hr_dashboard_noposition_path(format: "xlsx")
+                
+              - elsif current_page? hr_dashboard_notselected_path
+                = link_to "Export To Excel", hr_dashboard_notselected_path(format: "xlsx")
+                
+              - else 
+                = link_to "Export To Excel", hr_dashboard_unqualified_path(format: "xlsx")
+            .ui.right.floated.small.primary.labeled.icon.button
+              i.table.icon
+              - if current_page? hr_dashboard_hired_path
+                = link_to "Export As CSV", hr_dashboard_hired_path(format: "csv")
+                
+              - elsif current_page? hr_dashboard_noposition_path
+                = link_to "Export As CSV", hr_dashboard_noposition_path(format: "csv")
+                
+              - elsif current_page? hr_dashboard_notselected_path
+                = link_to "Export As CSV", hr_dashboard_notselected_path(format: "csv")
+                
+              - else 
+                = link_to "Export As CSV", hr_dashboard_unqualified_path(format: "csv")
               
-            - elsif current_page? hr_dashboard_no_position_path
-              = link_to "Export To Excel", hr_dashboard_no_position_path(format: "xlsx")
-              
-            - elsif current_page? hr_dashboard_not_selected_path
-              = link_to "Export To Excel", hr_dashboard_not_selected_path(format: "xlsx")
-              
-            - else 
-              = link_to "Export To Excel", hr_dashboard_unqualified_path(format: "xlsx")
-          .ui.right.floated.small.primary.labeled.icon.button
-            i.table.icon
-            - if current_page? hr_dashboard_hired_path
-              = link_to "Export As CSV", hr_dashboard_hired_path(format: "csv")
-              
-            - elsif current_page? hr_dashboard_no_position_path
-              = link_to "Export As CSV", hr_dashboard_no_position_path(format: "csv")
-              
-            - elsif current_page? hr_dashboard_not_selected_path
-              = link_to "Export As CSV", hr_dashboard_not_selected_path(format: "csv")
-              
-            - else 
-              = link_to "Export As CSV", hr_dashboard_unqualified_path(format: "csv")
-            
-          .ui.small.button
-            | Delete
-          .ui.small.disabled.button
-            | Delete All
+            = hidden_field_tag  "path", controller.action_name
+            button.ui.small.button name="send" type="submit"
+              | Delete
+            / .ui.small.disabled.button
+            /   | Delete All
 - else 
   .ui.segment
     == render 'layouts/nodata'          

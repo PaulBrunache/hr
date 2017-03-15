@@ -10,3 +10,4 @@ table.ui.sortable.celled.table
       td = job.title
       td = job.description
       td = link_to 'Edit', edit_job_posting_path(job), class: "ui basic teal button"
+      td = link_to 'Delete',job, method: :delete, data: { confirm: 'Are you sure?' },class: "ui basic red button"

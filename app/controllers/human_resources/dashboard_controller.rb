@@ -179,7 +179,27 @@ class HumanResources::DashboardController < ApplicationController
     end
   end
 
+  #manage
+  def destroyReferrals
+    Rails.logger.debug params.inspect
 
+    url = params[:path].sub("list_for_", "")
+    puts "\n\n#{url}"
+    url = "hr_dashboard_" + url + "_path"
+    puts "\n\n#{url}"
+    if params[:deleteThis]
+      params[:deleteThis].each  do |key, val|
+        if val.eql? "true"
+          referral = Referral.where(email: key).first
+          referral.destroy
+        end
+      end
+      redirect_to send(url)
+      flash[:success] = "Record/Records were successfully deleted"
+    else
+      flash[:warning] = "In order to delete a record you must use the slider"
+    end
+  end
   private
     def generate_password
       Devise.friendly_token.first(6)

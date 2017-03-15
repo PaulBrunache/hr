@@ -27,8 +27,8 @@ Rails.application.routes.draw do
   get 'hr/dashboard/viewAdmins',to: 'human_resources/dashboard#viewAdmins'
   get 'hr/dashboard/leaderboard',to: 'human_resources/dashboard#leaderboard'
   get 'hr/dashboard/hired',to: 'human_resources/dashboard#list_for_hired'
-  get 'hr/dashboard/no-position',to: 'human_resources/dashboard#list_for_no_position'
-  get 'hr/dashboard/not-selected',to: 'human_resources/dashboard#list_for_not_selected'
+  get 'hr/dashboard/noposition',to: 'human_resources/dashboard#list_for_no_position'
+  get 'hr/dashboard/notselected',to: 'human_resources/dashboard#list_for_not_selected'
   get 'hr/dashboard/unqualified',to: 'human_resources/dashboard#list_for_unqualified'
   get 'hr/dashboard/profile',to: 'human_resources/dashboard#profile'
   #Forms
@@ -36,4 +36,5 @@ Rails.application.routes.draw do
   post 'phase_one', to: 'human_resources/dashboard#phase_one'
   post 'phase_two', to: 'human_resources/dashboard#phase_two'
   post 'phase_three', to: 'human_resources/dashboard#phase_three'
+  post 'destroyReferrals', to: 'human_resources/dashboard#destroyReferrals'
 end

@@ -55,4 +55,5 @@ class ReferralsController < ApplicationController
     def referral_params
       params.require(:referral).permit(:first_name, :last_name, :email, :phone_number, :employee_id, :job_posting_id)
     end
+
 end
