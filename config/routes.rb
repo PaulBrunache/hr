@@ -6,12 +6,12 @@ Rails.application.routes.draw do
   resources :departments
   root 'pages#home'
 
-  devise_for :human_resources, path: 'hr', controllers: { registrations: "registrations" },
+  devise_for :human_resources, path: 'hr', controllers: { registrations: "human_resources/registrations" },
   path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret',
   confirmation: 'verification',sign_up: 'register',edit: 'edit/profile'
   }
 
-  devise_for :employees, path: 'employee', controllers: { registrations: "registrations" },
+  devise_for :employees, path: 'employee', controllers: { registrations: "employees/registrations" },
   path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret',
   confirmation: 'verification',sign_up: 'register',edit: 'edit/profile'
   }
