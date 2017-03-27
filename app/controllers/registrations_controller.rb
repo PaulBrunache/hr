@@ -5,8 +5,10 @@ class RegistrationsController < Devise::RegistrationsController
     # end
     #
     def after_update_path_for(resource)
-      puts "\n\nit's not working ???? #{resource.to}\n\n"
-      hr_dashboard_manageReferrals_path
+      edit_human_resource_registration_path
+    end
+    def account_update_params
+      params.require(:human_resource).permit(:first_name, :last_name, :email, :password, :password_confirmation, :current_password)
     end
 
 end

@@ -89,7 +89,6 @@ ActiveRecord::Schema.define(version: 20160915054934) do
     t.boolean  "not_selected_eligible",   default: false
     t.boolean  "not_selected_ineligible", default: false
     t.text     "phone_screening",         default: "{\"contacted1\":false,\"contacted2\":false,\"contacted3\":false,\"unqualified\":false,\"sent_to_hr\":false}"
-    t.text     "hr_screening",            default: "{\"no_position\":false,\"not_qualified\":false,\"move_to_interview\":false}"
     t.integer  "employee_id"
     t.integer  "job_posting_id"
     t.datetime "created_at",                                                                                                                                      null: false
