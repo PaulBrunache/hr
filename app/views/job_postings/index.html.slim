@@ -3,11 +3,12 @@ table.ui.sortable.celled.table
     tr
       th Name
       th Job Description
-      th Actions
+      th colspan="2" Actions
+
   tbody
-  - @job_postings.each do |job|
-    tr
-      td = job.title
-      td = job.description
-      td = link_to 'Edit', edit_job_posting_path(job), class: "ui basic teal button"
-      td = link_to 'Delete',job, method: :delete, data: { confirm: 'Are you sure?' },class: "ui basic red button"
+    - @job_postings.each do |job|
+      tr
+        td = job.title
+        td = job.description
+        td = link_to 'Edit', edit_job_posting_path(job), class: "ui basic teal button"
+        td = link_to 'Delete',job, method: :delete, data: { confirm: 'Are you sure?' },class: "ui basic red button"

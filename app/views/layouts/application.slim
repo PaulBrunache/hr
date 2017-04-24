@@ -10,25 +10,20 @@ head
 body
 
   #application
-    
+
     - if reroute(params[:controller])
       #menu
         == render 'layouts/dashboardMenu'
       #content
+        == render 'layouts/fixed_dash_menu'
         - flash.each do |key, value|
           = content_tag :div, value, class: "ui #{key} message"
-        .ui-container
-          = yield 
+        #dash-content
+          = yield
     - else
       #menu-home
         == render 'layouts/homeMenu'
       #content-not-dash
         - flash.each do |key, value|
           = content_tag :div, value, class: "ui #{key} message"
-        .ui-container
-          = yield 
-
- 
-    
-        
-        
+        = yield

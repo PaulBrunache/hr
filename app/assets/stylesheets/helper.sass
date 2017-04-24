@@ -1,0 +1,166 @@
+/*=============================================================================
+/** Hardware acceleration for animations
+/**============================================================================
+
+=enableAcceleration()
+  -webkit-transform: translateZ(0)
+  -moz-transform: translateZ(0)
+  -ms-transform: translateZ(0)
+  -o-transform: translateZ(0)
+  transform: translateZ(0)
+
+=transition($speed: $tinyElementTransitionDuration, $curve: ease, $properties: null)
+  +enableAcceleration
+  @if (type_of($properties) == list)
+    @each $property in $properties
+      -webkit-transition: $property $speed $curve !important
+      -moz-transition: $property $speed $curve !important
+      transition: $property $speed $curve !important
+  @else
+    -webkit-transition: all $speed $curve !important
+    -moz-transition: all $speed $curve !important
+    transition: all $speed $curve !important
+
+// transition for small elements like inputs, buttons, etc
+@mixin transition-tiny-element
+  @include transition($tinyElementTransitionDuration, ease)
+// transition for larger elements/groups like containers, panels, segments
+@mixin transition-large-element
+  @include transition($largeElementTransitionDuration, cubic-bezier(0.55, 0.06, 0.68, 0.19))
+/*=============================================================================
+/** Rounded corners
+/**============================================================================
+=border-radius ($bradius)
+  -webkit-border-radius: $bradius+rem !important
+  -moz-border-radius: $bradius+rem !important
+  -ms-border-radius: $bradius+rem !important
+  border-radius: $bradius+rem !important
+/*=============================================================================
+/** Box Shadow
+/**============================================================================
+
+=box-shadow($top: $boxShadowTop, $left: $boxShadowLeft, $blur: $boxShadowBlur, $size: $boxShadowSize, $color: $shadowColor, $inset: false)
+  @if $inset
+    -webkit-box-shadow: inset $top $left $blur $size $color !important
+    -moz-box-shadow: inset $top $left $blur $size $color !important
+    box-shadow: inset $top $left $blur $size $color !important
+    -o-box-shadow: inset $top $left $blur $size $color !important
+  @else
+    -webkit-box-shadow: $top $left $blur $size $color !important
+    -moz-box-shadow: $top $left $blur $size $color !important
+    box-shadow: $top $left $blur $size $color !important
+    -o-box-shadow: inset $top $left $blur $size $color !important
+
+@mixin remove-box-shadow()
+  -webkit-box-shadow: none !important
+  -moz-box-shadow: none !important
+  box-shadow: none !important
+  -o-box-shadow: none !important
+
+/*=============================================================================
+/** Flex box
+/**============================================================================
+=display-flex
+  display: -webkit-box
+  display: -moz-box
+  display: -ms-flexbox
+  display: -webkit-flex
+  display: flex
+@mixin display-inline-flex
+  display: -moz-inline-box
+  display: -ms-inline-flexbox
+  display: -webkit-inline-flex
+  display: inline-flex
+
+=flex($size)
+  -ms-flex: $size
+  -webkit-flex: $size
+  flex: $size
+
+=flex-width($size, $pixel: true)
+  @if $pixel
+    -webkit-flex-basis: $size + px
+    -moz-flex-basis: $size + px
+    -ms-flex-preferred-size: $size + px
+    flex-basis: $size + px
+  @else
+    -webkit-flex-basis: $size + '%'
+    -moz-flex-basis: $size + '%'
+    -ms-flex-preferred-size: $size + '%'
+    flex-basis: $size + '%'
+
+=flex-shrink($size: 0)
+  -webkit-flex-shrink: $size
+  -moz-flex-shrink: $size
+  -ms-flex-negative: $size
+  flex-shrink: $size
+
+=flex-grow($size: 0)
+  -webkit-box-flex: $size
+  -webkit-flex-grow: $size
+  -moz-flex-grow: $size
+  -ms-flex-positive: $size
+  flex-grow: $size
+
+=flex-align-center
+  -webkit-align-items: center !important
+  align-items: center !important
+=flex-align-items($type)
+  align-items: flex- + $type
+
+=flex-direction-row ($row: true)
+  @if $row
+    -ms-flex-direction: row
+    -moz-flex-direction: row
+    -webkit-flex-direction: row
+    flex-direction: row
+  @else
+    -ms-flex-direction: column
+    -moz-flex-direction: column
+    -webkit-flex-direction: column
+    flex-direction: column
+
+
+/*=============================================================================
+/** User Select
+/**============================================================================
+@mixin user-select($val)
+  -webkit-user-select: $val  /* Chrome all / Safari all */
+  -moz-user-select: $val     /* Firefox all */
+  -ms-user-select: $val      /* IE 10+ */
+  user-select: $val          /* Likely future */
+
+/*=============================================================================
+/** Inputs
+/**============================================================================
+
+@mixin input-placeholder($prop, $val)
+  &::-webkit-input-placeholder /* Chrome/Opera/Safari */
+    #{$prop}: $val !important
+  &::-moz-placeholder /* Firefox 19+ */
+    #{$prop}: $val !important
+  &:-ms-input-placeholder /* IE 10+ */
+    #{$prop}: $val !important
+  &:-moz-placeholder /* Firefox 18- */
+    #{$prop}: $val !important
+
+/*=============================================================================
+/** Padding/Margins
+/**============================================================================
+
+@mixin absolute-match-parent-padding($parent, $selector, $style)
+  @each $name, $value in $padding-map
+    #{$parent}.#{$name+"-padded"} > #{$selector}
+      #{$style}: $value
+
+/*=============================================================================
+/** Font Weights
+/**============================================================================
+@mixin font-regular()
+  font-weight: 400
+@mixin font-medium()
+  font-weight: 600
+@mixin font-bold()
+  font-weight: 700
+@mixin font-extra-bold()
+  font-weight: 800

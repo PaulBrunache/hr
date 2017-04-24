@@ -2,25 +2,6 @@
   #welcome
     = link_to "", root_path, class: "menu item"
 
-  .right.labeled.menu.red
-    - if is_hr_logged_in?(params[:controller])
-      / - puts "the world is #{params[:controller]}\n\n"
-      a.item
-        | Available Space: #{(10000 - get_total_rows)}
-      = link_to edit_human_resource_registration_path, class: "item"
-        i.user.icon
-        | Profile  
-      = link_to destroy_human_resource_session_path, method: :delete, class: "item"
-        i.lock.icon		    
-        | Logout	
-    - else
-      = link_to edit_employee_registration_path, class: "item"
-        i.user.icon
-        | Profile  
-      = link_to destroy_employee_session_path, method: :delete, class: "item"
-        i.lock.icon		    
-        | Logout	
-      
 #dashboard-sidebar.new-menu
   - if is_hr_logged_in?(params[:controller])
     == render 'layouts/hr_sidebar'
