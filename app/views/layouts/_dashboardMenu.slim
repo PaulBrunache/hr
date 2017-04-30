@@ -1,8 +1,6 @@
-.ui.icon.menu.bg-gradient-main
-  #welcome
-    = link_to "", root_path, class: "menu item"
-
-#dashboard-sidebar.new-menu
+#welcome
+    = link_to "", root_path
+#dashboard-sidebar-content.new-menu
   - if is_hr_logged_in?(params[:controller])
     == render 'layouts/hr_sidebar'
   - else

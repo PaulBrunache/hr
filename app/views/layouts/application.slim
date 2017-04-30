@@ -12,7 +12,7 @@ body
   #application
 
     - if reroute(params[:controller])
-      #menu
+      .sidebar-menu-container
         == render 'layouts/dashboardMenu'
       #content
         == render 'layouts/fixed_dash_menu'
@@ -21,9 +21,10 @@ body
         #dash-content
           = yield
     - else
-      #menu-home
-        == render 'layouts/homeMenu'
-      #content-not-dash
-        - flash.each do |key, value|
-          = content_tag :div, value, class: "ui #{key} message"
-        = yield
+      #home-page
+        #menu-home
+          == render 'layouts/homeMenu'
+        #content-not-dash
+          - flash.each do |key, value|
+            = content_tag :div, value, class: "ui #{key} message"
+          = yield

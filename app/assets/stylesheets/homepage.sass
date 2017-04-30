@@ -1,0 +1,14 @@
+#application
+  #home-page
+    width: 100%
+    +display-flex
+    +flex-direction-row(false)
+    #content-not-dash
+      overflow: scroll
+    .authorized-container
+      margin-top: 5%
+
+@include tablet
+  #content-not-dash
+    .authorized-container
+      padding: 0

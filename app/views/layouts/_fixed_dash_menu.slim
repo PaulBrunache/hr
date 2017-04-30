@@ -1,9 +1,11 @@
 #inner-menu
   .ui.icon.menu.bg-gradient-main
+    = link_to "#", class: "item mobile-click"
+      i.large.content.icon
     .right.labeled.menu.red
       - if is_hr_logged_in?(params[:controller])
         / - puts "the world is #{params[:controller]}\n\n"
-        a.item
+        a.item#count
           | Available Space: #{(10000 - get_total_rows)}
         = link_to edit_human_resource_registration_path, class: "item"
           i.user.icon

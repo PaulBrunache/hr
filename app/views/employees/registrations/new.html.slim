@@ -1,7 +1,7 @@
 .authorized-container.ui.middle.aligned.centered.grid.scroll
-  .twelve.wide.column.custom-border
+  .twelve.wide.computer.fourteen.wide.mobile.column.custom-border
     img.ui.fluid.image.shadow alt="Background" height="100%" src="/assets/background-6ea1d099cdaeba8e2b6cd947611b89a0f3b2dac4c5725a77e9a701736cdccef1.png" width="100%" /
-  .twelve.wide.column.authorize-form
+  .twelve.wide.computer.fourteen.wide.mobile.column.authorize-form
     = form_for(resource,html: {class:'ui form'}, as: resource_name, url: registration_path(resource_name)) do |f|
       = devise_error_messages!
       h4.ui.dividing.header.center.aligned Employees Signup

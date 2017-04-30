@@ -1,20 +1,22 @@
+
 .menu-footer.ui.labeled.vertical.icon.fluid.menu
   a.item.new_lifted style="background-color: white; color:rgba(60,60,60,.9); font-size: 1.1rem"
     i.massive.dashboard.icon
     | Welcome to your Dashboard
-.ui.teal.menu.huge.fluid.vertical.inverted
-  = link_to employee_dashboard_index_path, class: "item active"
-    i.home.icon
-    | Dashboard
-  = link_to new_referral_path, class: "item"
-    i.user.icon
-    | Refer A Friend
-  a.large.item href=employee_dashboard_my_referrals_path
-    i.signal.icon
-    | My referrals
-  = link_to edit_employee_registration_path, class: "item"
-    i.settings.icon
-    | Manage Profile
-    
+.scrollable
+  .ui.teal.menu.huge.fluid.vertical.inverted
+    = link_to employee_dashboard_index_path, class: "item active"
+      i.home.icon
+      | Dashboard
+    = link_to new_referral_path, class: "item"
+      i.user.icon
+      | Refer A Friend
+    a.large.item href=employee_dashboard_my_referrals_path
+      i.signal.icon
+      | My referrals
+    = link_to edit_employee_registration_path, class: "item"
+      i.settings.icon
+      | Manage Profile
 
- 
+
+

@@ -1,0 +1,31 @@
+.sidebar-menu-container
+  background-color: #1eade5
+  +display-flex
+  +flex-direction-row(false)
+  width: 317px
+  min-width: 317px
+  .ui.icon.menu
+    margin-bottom: 0
+    .item
+      color: rgba(255,255,255,.85)
+  #welcome
+    width: 100%
+    min-height: 65px
+    border: none
+    border-top-left-radius: 7px
+    box-shadow: 0 -1px 5px rgba(0,0,0,.3)
+    padding: 0
+    z-index: 1
+    background-image: image-url('background.png')
+    background-size: 100% 100%
+    background-repeat: no-repeat
+    img
+    .menu.item
+      height: 100%
+  #dashboard-sidebar-content
+    overflow: scroll
+
+    background-color: #fafcfe
+    box-shadow: 0px -4px 5px rgba(0,0,0,.3)
+    .ui.fluid.large.vertical.menu
+      padding-top: 50px
