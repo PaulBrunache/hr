@@ -23,7 +23,13 @@ module ApplicationHelper
   end
   def get_job_name(id)
     job = JobPosting.where(id: id).first
-    job.title
+    puts "Value of Job is #{job}"
+    if job
+      job.title
+    else
+      puts "job Not found ?"
+      "No Job was selected"
+    end
   end
   def get_referral_count(role)
     # if role == "Human Resources"

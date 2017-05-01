@@ -9,11 +9,11 @@ module ReferralsHelper
       not_hired: false
     }
     if referral.hired_hourly || referral.hired_salaried ||referral.hired_hard_to_fill
-      status.hired = true
+      status[:hired] = true
     end
     if referral.not_selected_eligible || referral.not_selected_ineligible || referral.no_position ||
       referral.unqualified
-      status.not_hired = true
+      status[:not_hired] = true
     end
 
     if status[:pending] and !status[:phone_screening]

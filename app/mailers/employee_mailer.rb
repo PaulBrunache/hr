@@ -1,10 +1,11 @@
 class EmployeeMailer < ApplicationMailer
+  default from: 'no-reply@morselife.org'
 
   def submission_confirmation(employee,referral, job)
     @employee = employee
     @referral = referral
     @job = job.title
-    mail(content_type "multipart/alternative", to: @employee.email,
+    mail(to: @employee.email,
       subject: "Thank you! Your referral has been accepted."
     )
   end
@@ -12,7 +13,7 @@ class EmployeeMailer < ApplicationMailer
   def two_contact_attempts(employee,referral)
     @employee = employee
     @referral = referral
-    mail(content_type "multipart/alternative", to: @employee.email,
+    mail(to: @employee.email,
       subject: "Referral Status Update - We Are in Need of Your Assistance."
     )
   end
@@ -20,8 +21,8 @@ class EmployeeMailer < ApplicationMailer
   def final_attempt(employee,referral)
     @employee = employee
     @referral = referral
-    mail(content_type "multipart/alternative", to: @employee.email,
-      subject: "Referral Status Update - Thank you for Thinking of Us!",
+    mail( to: @employee.email,
+      subject: "Referral Status Update - Thank you for Thinking of Us!"
     )
   end
 
@@ -29,8 +30,8 @@ class EmployeeMailer < ApplicationMailer
     @employee = employee
     @referral = referral
     @job = job.title
-    mail(content_type "multipart/alternative", to: @employee.email,
-      subject: "Referral Status Update - Thank You!",
+    mail( to: @employee.email,
+      subject: "Referral Status Update - Thank You!"
     )
   end
 
@@ -38,8 +39,8 @@ class EmployeeMailer < ApplicationMailer
     @employee = employee
     @referral = referral
     @job = job.title
-    mail(content_type "multipart/alternative", to: @employee.email,
-      subject: "Referral Status Update - You are Ahead of the Game!",
+    mail(to: @employee.email,
+      subject: "Referral Status Update - You are Ahead of the Game!"
     )
   end
 
@@ -47,8 +48,8 @@ class EmployeeMailer < ApplicationMailer
     @employee = employee
     @referral = referral
     @job = job.title
-    mail(content_type "multipart/alternative", to: @employee.email,
-      subject: "Referral Status Update - Great News!",
+    mail(to: @employee.email,
+      subject: "Referral Status Update - Great News!"
     )
   end
 
@@ -56,16 +57,16 @@ class EmployeeMailer < ApplicationMailer
     @employee = employee
     @referral = referral
     @job = job.title
-    mail(content_type "multipart/alternative", to: @employee.email,
-      subject: "Referral Status Update - Congratulations!",
+    mail(to: @employee.email,
+      subject: "Referral Status Update - Congratulations!"
     )
   end
 
   def points(employee,points,prize)
     @employee = employee
     @referral = referral
-    mail(content_type "multipart/alternative", to: @employee.email,
-      subject: "You've Earned It!",
+    mail( to: @employee.email,
+      subject: "You've Earned It!"
     )
   end
 end

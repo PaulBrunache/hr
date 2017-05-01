@@ -1,24 +1,26 @@
 #admin_dashboard.ui.segment
-  .ui.four.centered.cards
-    .ui.card
-      a.image href=new_referral_path
-        = image_tag("user.svg")
-      .content
-        a.header href=new_referral_path  Refer a Friend
-        .meta
-          a Help us get the best
-    .ui.card
-      a.image href='#'
-        = image_tag("medal.svg")
-      .content
-        a.header href="#"  View Points
-        .meta
-          a This shows your total points
-        
-    .ui.card
-      a.image href=employee_dashboard_my_referrals_path
-        = image_tag("settings-1.svg")
-      .content
-        a.header href=employee_dashboard_my_referrals_path  Manage Referrals
-        .meta
-          a Update Referral info
+  .ui.centered.grid.column
+    .five.wide.computer.five.wide.tablet.ten.wide.mobile.column
+      .ui.card
+        a.image href=new_referral_path
+          = image_tag("user.svg")
+        .content
+          a.header href=new_referral_path  Refer a Friend
+          .meta
+            a Help us get the best
+    .five.wide.computer.five.wide.tablet.ten.wide.mobile.column
+      .ui.card
+        a.image href='#'
+          = image_tag("medal.svg")
+        .content
+          a.header href="#"  View Points
+          .meta
+            a This shows your total points
+    .five.wide.computer.five.wide.tablet.ten.wide.mobile.column
+      .ui.card
+        a.image href=employee_dashboard_my_referrals_path
+          = image_tag("settings-1.svg")
+        .content
+          a.header href=employee_dashboard_my_referrals_path  Manage Referrals
+          .meta
+            a Update Referral info

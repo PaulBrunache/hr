@@ -4,14 +4,14 @@ class HumanResources::DashboardController < ApplicationController
 
   def manageReferrals
     @concierge_referral_list = Referral.where({unqualified: false, hr_eval: false})
-    @hr_referral_list = Referral.where({hr_eval: true, interview: false})
+    @hr_referral_list = Referral.where({hr_eval: true, interview: false,unqualified: false, no_position: false})
   end
 
   def manageAdmins
     @admin = HumanResource.new
   end
   def interview
-    @list = Referral.where({interview: true, hired_hourly: false,hired_hard_to_fill: false,
+    @list = Referral.where({interview: true, hired_salaried: false, hired_hourly: false,hired_hard_to_fill: false,
       not_selected_ineligible: false, not_selected_eligible: false, no_position: false})
   end
   def viewAdmins
@@ -39,7 +39,7 @@ class HumanResources::DashboardController < ApplicationController
 
 # Referral status List
   def list_for_hired
-    @list = Referral.where({hired_hourly: true,hired_hard_to_fill: true})
+     @list = Referral.where('hired_hourly = true').or(Referral.where('hired_salaried = true')).or(Referral.where('hired_hard_to_fill = true'))
     respond_to do |format|
       format.html
       format.csv { send_data @list.to_csv, filename: "hired-#{Date.today}.csv" }
@@ -130,9 +130,11 @@ class HumanResources::DashboardController < ApplicationController
         add_points(employee,employee.points, 25 )
         referral.interview = true
         referral.save
-        EmployeeMailer.interview(employee,referral,job).deliver      ReferralMailer.interview(employee,referral,job).deliver
+        EmployeeMailer.interview(employee,referral,job).deliver
+        ReferralMailer.interview(employee,referral,job).deliver
       end
       flash[:success] = "Referral was successfully updated"
+      redirect_to hr_dashboard_manageReferrals_path
     else
       flash[:error] = "You must select an option"
       redirect_to hr_dashboard_manageReferrals_path
@@ -145,7 +147,7 @@ class HumanResources::DashboardController < ApplicationController
       job = JobPosting.where(id: referral.job_posting_id).first
       employee = Employee.where(id: referral.employee_id).first
 
-      case params[:phase_two]
+      case params[:phase_three]
       when "not_selected_ineligible"
         referral.not_selected_ineligible = true
         referral.save
@@ -181,9 +183,8 @@ class HumanResources::DashboardController < ApplicationController
 
   #manage
   def destroyReferrals
-    Rails.logger.debug params.inspect
-
     url = params[:path].sub("list_for_", "")
+    url = url.sub("_", "")
     puts "\n\n#{url}"
     url = "hr_dashboard_" + url + "_path"
     puts "\n\n#{url}"
