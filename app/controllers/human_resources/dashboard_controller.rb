@@ -20,8 +20,7 @@ class HumanResources::DashboardController < ApplicationController
 
   def create_hr
     password = generate_password
-    @admin = HumanResource.new(email: params[:admin_email],
-    password: password, password_confirmation: password, role: params[:role])
+    @admin = HumanResource.new(email: params[:admin_email],password: password, password_confirmation: password, role: params[:role])
 
     if @admin.valid?
       @admin.save!
@@ -29,6 +28,7 @@ class HumanResources::DashboardController < ApplicationController
       render :manageAdmins
       @admin.send_reset_password_instructions
     else
+      flash[:error] = "Something went wrong"
       render :manageAdmins
     end
   end
