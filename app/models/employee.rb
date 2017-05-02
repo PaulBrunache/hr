@@ -10,7 +10,7 @@ class Employee < ApplicationRecord
                     uniqueness: true
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :phone_number, presence: true
+  validates :phone_number, presence: true, format: { with: /\d{3}\d{3}\d{4}/, message: "Invalid format - example 3332221144" }
   validates :department_id, presence: true
   validates :employee_number, presence: true
 end
