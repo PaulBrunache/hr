@@ -4,4 +4,13 @@ class Employee < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :referrals
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true,
+                    format: { with: VALID_EMAIL_REGEX },
+                    uniqueness: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :phone_number, presence: true
+  validates :department_id, presence: true
+  validates :employee_number, presence: true
 end
